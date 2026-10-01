@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="cs" class="scroll-smooth">
-
+<!--ну що народ бажаю всім успіху розбирати цей код якщо хтось взагалі це буде робити
+що ще можу сказати сьогодні точно треба помирати шкода що сабіна буде плакати і печалитись але нічого
+так також буває та і не все ж нам радіти хахаха хоче радості мало в мене останні пів року..-->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rodinný Hotel «Útulný Kout» — Dovolená a pohoda pro celou rodinu</title>
+    <title>Rodinný hotel — Dovolená a pohoda pro celou rodinu</title>
     <!-- Tailwind CSS CDN -->
-    <script src=""></script>
+    <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome icons CDN -->
-    <link rel="stylesheet" href=>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts Inter & Playfair Display -->
-    <link rel="preconnect" href="">
-    <link rel="preconnect" href=">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -53,12 +55,8 @@
             color: #332C27;
         }
 
-        .wood-border {
-            border-color: #D5BC9F;
-        }
-
         .hero-overlay {
-            background: linear-gradient(180deg, rgba(30, 48, 35, 0.68) 0%, rgba(30, 48, 35, 0.48) 50%, rgba(250, 246, 240, 1) 100%);
+            background: linear-gradient(180deg, rgba(30, 48, 35, 0.75) 0%, rgba(30, 48, 35, 0.55) 60%, rgba(250, 246, 240, 1) 100%);
         }
     </style>
 </head>
@@ -74,21 +72,19 @@
                 <a href="#" class="flex items-center gap-3 group">
                     <div
                         class="w-10 h-10 rounded-full bg-forest-700 text-warmbg flex items-center justify-center font-serif text-xl font-bold group-hover:bg-ochre-500 transition-colors">
-                        ÚK
+                        <i class="fa-solid fa-hotel text-sm"></i>
                     </div>
                     <div class="flex flex-col">
-                        <span class="font-serif text-2xl font-bold tracking-wide text-forest-800">Útulný Kout</span>
-                        <span class="text-xs text-wood font-medium tracking-wider uppercase">Rodinný Hotel</span>
+                        <span class="font-serif text-2xl font-bold tracking-wide text-forest-800">Rodinný hotel</span>
                     </div>
                 </a>
-
+                
                 <!-- Desktop Navigation Links in Czech -->
                 <nav class="hidden md:flex items-center space-x-8 font-medium text-forest-800">
                     <a href="#about" class="hover:text-ochre-500 transition-colors">O nás</a>
                     <a href="#rooms" class="hover:text-ochre-500 transition-colors">Pokoje a Ceník</a>
                     <a href="#amenities" class="hover:text-ochre-500 transition-colors">Služby</a>
                     <a href="#booking" class="hover:text-ochre-500 transition-colors">Rezervace</a>
-                    <a href="#reviews" class="hover:text-ochre-500 transition-colors">Hodnocení</a>
                     <a href="#contacts" class="hover:text-ochre-500 transition-colors">Kontakt</a>
                 </nav>
 
@@ -115,7 +111,7 @@
         <!-- Mobile Navigation Drawer -->
         <div id="mobile-menu" class="hidden md:hidden bg-warmcard border-b border-beige-200 px-4 pt-2 pb-6 space-y-3">
             <a href="#about"
-                class="block px-3 py-2 rounded-md text-base font-medium text-forest-800 hover:bg-beige-100">O нас</a>
+                class="block px-3 py-2 rounded-md text-base font-medium text-forest-800 hover:bg-beige-100">O nás</a>
             <a href="#rooms"
                 class="block px-3 py-2 rounded-md text-base font-medium text-forest-800 hover:bg-beige-100">Pokoje a
                 Ceník</a>
@@ -123,8 +119,6 @@
                 class="block px-3 py-2 rounded-md text-base font-medium text-forest-800 hover:bg-beige-100">Služby</a>
             <a href="#booking"
                 class="block px-3 py-2 rounded-md text-base font-medium text-forest-800 hover:bg-beige-100">Rezervace</a>
-            <a href="#reviews"
-                class="block px-3 py-2 rounded-md text-base font-medium text-forest-800 hover:bg-beige-100">Hodnocení</a>
             <a href="#contacts"
                 class="block px-3 py-2 rounded-md text-base font-medium text-forest-800 hover:bg-beige-100">Kontakt</a>
             <a href="#booking"
@@ -135,23 +129,22 @@
     </header>
 
     <!-- Hero Banner & Quick Search Bar -->
-    <section id="about" class="relative min-h-[85vh] flex flex-col justify-between bg-cover bg-center text-white"
-        style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1920&q=80');">
+    <section id="about" class="relative min-h-[75vh] flex flex-col justify-between bg-forest-800 text-white">
         <div class="absolute inset-0 hero-overlay"></div>
 
-        <!-- Hero Content in Czech -->
+        <!-- Hero Content -->
         <div
             class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12 flex-grow flex flex-col justify-center text-center items-center">
             <span
-                class="inline-block bg-beige-100/20 backdrop-blur-md text-beige-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 border border-white/20">
+                class="inline-block bg-white/10 backdrop-blur-md text-beige-100 px-4 py-1.5 rounded-full text-sm font-medium mb-4 border border-white/20">
                 <i class="fa-solid fa-heart text-ochre-500 mr-2"></i>Vaše dokonalá rodinná dovolená
             </span>
             <h1
                 class="font-serif text-4xl sm:text-6xl font-bold leading-tight max-w-4xl mb-6 tracking-wide drop-shadow-sm">
-                Váš druhý domov v srdci přírody
+                Vítejte v našem Rodinném hotelu
             </h1>
-            <p class="text-lg sm:text-xl text-beige-100 max-w-2xl mb-8 font-light">
-                Užijte si klid, poctivou domácí kuchyni a péči o každého člena vaší rodiny v malebném prostředí.
+            <p class="text-lg sm:text-xl text-beige-100 max-w-2xl mb-8 font-light leading-relaxed">
+                Užijte si klid, poctivou domácí kuchyni a péči o každého člena vaší rodiny v příjemném prostředí.
             </p>
         </div>
 
@@ -162,19 +155,15 @@
                     <!-- Check-in -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-wood mb-1.5">Příjezd</label>
-                        <div class="relative">
-                            <input type="date" id="hero-checkin" required
-                                class="w-full bg-warmbg border border-beige-300 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-ochre-500 focus:outline-none">
-                        </div>
+                        <input type="date" id="hero-checkin" required
+                            class="w-full bg-warmbg border border-beige-300 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-ochre-500 focus:outline-none">
                     </div>
 
                     <!-- Check-out -->
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wider text-wood mb-1.5">Odjezd</label>
-                        <div class="relative">
-                            <input type="date" id="hero-checkout" required
-                                class="w-full bg-warmbg border border-beige-300 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-ochre-500 focus:outline-none">
-                        </div>
+                        <input type="date" id="hero-checkout" required
+                            class="w-full bg-warmbg border border-beige-300 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-ochre-500 focus:outline-none">
                     </div>
 
                     <!-- Guests -->
@@ -198,7 +187,7 @@
                             class="w-full bg-warmbg border border-beige-300 rounded-xl px-3.5 py-2.5 text-sm font-medium focus:ring-2 focus:ring-ochre-500 focus:outline-none">
                             <option value="standard">Standard Dvoulůžkový</option>
                             <option value="family" selected>Rodinné Apartmá</option>
-                            <option value="cottage">Útulná Chata</option>
+                            <option value="cottage">Samostatná Chata</option>
                             <option value="superior">Superior s výhledem</option>
                         </select>
                     </div>
@@ -226,19 +215,22 @@
         </div>
 
         <!-- Room Cards Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 
             <!-- Room 1 -->
             <div
                 class="bg-warmcard rounded-3xl overflow-hidden border border-beige-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src=""
-                        alt="Rodinné Apartmá"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- Image Placeholder Container -->
+                <div
+                    class="relative h-64 bg-beige-100 border-b border-beige-200 flex flex-col items-center justify-center text-beige-300 group-hover:bg-beige-200/50 transition-colors">
+                    <i class="fa-solid fa-camera text-4xl mb-2 text-forest-700/30"></i>
+                    <span class="text-xs font-medium uppercase tracking-wider text-forest-800/50">Zde bude fotografie
+                        pokoje</span>
                     <span
                         class="absolute top-4 right-4 bg-forest-700 text-white text-xs font-bold px-3 py-1.5 rounded-full shadow">Nejoblíbenější
                         pro rodiny</span>
                 </div>
+
                 <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
                     <div>
                         <div class="flex justify-between items-start mb-2">
@@ -249,9 +241,8 @@
                             </div>
                         </div>
                         <p class="text-gray-600 text-sm mb-6">Prostorné dvoupokojové apartmá se samostatnou dětskou
-                            ložnicí, balkónem a výhledem do zahrady.</p>
+                            ložnicí, balkónem a výhledem do přírody.</p>
 
-                        <!-- Amenities list -->
                         <div class="grid grid-cols-2 gap-y-2 text-xs text-forest-700 mb-6 font-medium">
                             <div class="flex items-center gap-2"><i class="fa-solid fa-user-group text-ochre-500"></i>
                                 Až 4 osoby (2+2)</div>
@@ -275,11 +266,14 @@
             <!-- Room 2 -->
             <div
                 class="bg-warmcard rounded-3xl overflow-hidden border border-beige-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src=""
-                        alt="Standard Dvoulůžkový"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- Image Placeholder Container -->
+                <div
+                    class="relative h-64 bg-beige-100 border-b border-beige-200 flex flex-col items-center justify-center text-beige-300 group-hover:bg-beige-200/50 transition-colors">
+                    <i class="fa-solid fa-camera text-4xl mb-2 text-forest-700/30"></i>
+                    <span class="text-xs font-medium uppercase tracking-wider text-forest-800/50">Zde bude fotografie
+                        pokoje</span>
                 </div>
+
                 <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
                     <div>
                         <div class="flex justify-between items-start mb-2">
@@ -315,18 +309,21 @@
             <!-- Room 3 -->
             <div
                 class="bg-warmcard rounded-3xl overflow-hidden border border-beige-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src=""
-                        alt="Útulná Samostatná Chata"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- Image Placeholder Container -->
+                <div
+                    class="relative h-64 bg-beige-100 border-b border-beige-200 flex flex-col items-center justify-center text-beige-300 group-hover:bg-beige-200/50 transition-colors">
+                    <i class="fa-solid fa-camera text-4xl mb-2 text-forest-700/30"></i>
+                    <span class="text-xs font-medium uppercase tracking-wider text-forest-800/50">Zde bude fotografie
+                        pokoje</span>
                     <span
                         class="absolute top-4 right-4 bg-wood text-white text-xs font-bold px-3 py-1.5 rounded-full shadow">Maximální
                         soukromí</span>
                 </div>
+
                 <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
                     <div>
                         <div class="flex justify-between items-start mb-2">
-                            <h3 class="font-serif text-2xl font-bold text-forest-800">Útulná Samostatná Chata</h3>
+                            <h3 class="font-serif text-2xl font-bold text-forest-800">Samostatná Chata</h3>
                             <div class="text-right">
                                 <span class="text-2xl font-bold text-ochre-500">... CZK</span>
                                 <span class="text-xs text-gray-500 block">/ noc</span>
@@ -347,7 +344,7 @@
                         </div>
                     </div>
 
-                    <button onclick="selectRoom('cottage', 'Útulná Samostatná Chata')"
+                    <button onclick="selectRoom('cottage', 'Samostatná Chata')"
                         class="w-full bg-beige-100 hover:bg-forest-700 hover:text-white text-forest-800 font-semibold py-3 rounded-xl border border-beige-300 transition-colors duration-200 flex items-center justify-center gap-2">
                         <span>Vybrat tento pokoj</span>
                         <i class="fa-solid fa-arrow-right text-xs"></i>
@@ -358,11 +355,14 @@
             <!-- Room 4 -->
             <div
                 class="bg-warmcard rounded-3xl overflow-hidden border border-beige-200 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col group">
-                <div class="relative h-64 overflow-hidden">
-                    <img src=""
-                        alt="Superior s výhledem"
-                        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <!-- Image Placeholder Container -->
+                <div
+                    class="relative h-64 bg-beige-100 border-b border-beige-200 flex flex-col items-center justify-center text-beige-300 group-hover:bg-beige-200/50 transition-colors">
+                    <i class="fa-solid fa-camera text-4xl mb-2 text-forest-700/30"></i>
+                    <span class="text-xs font-medium uppercase tracking-wider text-forest-800/50">Zde bude fotografie
+                        pokoje</span>
                 </div>
+
                 <div class="p-6 sm:p-8 flex flex-col justify-between flex-grow">
                     <div>
                         <div class="flex justify-between items-start mb-2">
@@ -373,7 +373,7 @@
                             </div>
                         </div>
                         <p class="text-gray-600 text-sm mb-6">Světlý pokoj s panoramatickými okny, přistýlkou a
-                            nádherným výhledem do borového háje.</p>
+                            nádherným výhledem do okolní krajiny.</p>
 
                         <div class="grid grid-cols-2 gap-y-2 text-xs text-forest-700 mb-6 font-medium">
                             <div class="flex items-center gap-2"><i class="fa-solid fa-user-group text-ochre-500"></i>
@@ -419,7 +419,7 @@
                     </div>
                     <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">Dětské hřiště a herna</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Bezpečné venkovní hřiště na čerstvém vzduchu a
-                        vnitřní herna s animátorem pro naše nejmenší hosty.</p>
+                        vnitřní herna pro naše nejmenší hosty.</p>
                 </div>
 
                 <!-- Service 2 -->
@@ -430,8 +430,8 @@
                         <i class="fa-solid fa-utensils"></i>
                     </div>
                     <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">Rodinná restaurace</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Tradiční české i evropské pokrmy z čerstvých
-                        lokálních surovin. Speciální dětské menu a domácí pečivo.</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">Tradiční pokrmy z čerstvých lokálních surovin.
+                        Speciální dětské menu a domácí pečivo.</p>
                 </div>
 
                 <!-- Service 3 -->
@@ -442,8 +442,8 @@
                         <i class="fa-solid fa-hot-tub-person"></i>
                     </div>
                     <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">SPA & Vyhřívaný bazén</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Vnitřní bazén s příjemnou teplotou vody, finština,
-                        sauna a wellness zóna pro hlubokou relaxaci.</p>
+                    <p class="text-gray-600 text-sm leading-relaxed">Vnitřní bazén s příjemnou teplotou vody, sauna a
+                        wellness zóna pro hlubokou relaxaci.</p>
                 </div>
 
                 <!-- Service 4 -->
@@ -453,7 +453,7 @@
                         class="w-14 h-14 bg-beige-100 rounded-2xl flex items-center justify-center text-ochre-500 text-2xl mb-6">
                         <i class="fa-solid fa-fire-flame-curved"></i>
                     </div>
-                    <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">Venkovní posezení s ohništěm</h3>
+                    <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">Venkovní posezení</h3>
                     <p class="text-gray-600 text-sm leading-relaxed">Příjemné altány s grilem a ohništěm pro večerní
                         rodinné posezení pod hvězdným nebem.</p>
                 </div>
@@ -478,7 +478,7 @@
                         <i class="fa-solid fa-square-parking"></i>
                     </div>
                     <h3 class="font-serif text-xl font-bold text-forest-800 mb-3">Parkování a bezpečnost</h3>
-                    <p class="text-gray-600 text-sm leading-relaxed">Soukromé uzamčené parkoviště přímo u objektu zdarma
+                    <p class="text-gray-600 text-sm leading-relaxed">Soukromé uzamčené parkoviště přímo u objeku zdarma
                         pro všechny ubytované hosty.</p>
                 </div>
 
@@ -486,14 +486,9 @@
         </div>
     </section>
 
-    <!-- Booking Form Section & Live Calculator -->
+    <!-- Booking Form Section & Calculator -->
     <section id="booking" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-forest-800 rounded-3xl text-white p-6 sm:p-12 shadow-2xl relative overflow-hidden">
-            <!-- Decorative circle -->
-            <div
-                class="absolute -bottom-24 -right-24 w-96 h-96 bg-forest-700 rounded-full opacity-50 pointer-events-none">
-            </div>
-
             <div class="max-w-3xl mx-auto text-center mb-12 relative z-10">
                 <span class="text-ochre-500 font-semibold tracking-wider text-sm uppercase">Předběžná rezervace</span>
                 <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-2 mb-4">Rezervujte si svůj pobyt</h2>
@@ -517,7 +512,7 @@
                                 <option value="standard">Standard Dvoulůžkový (... CZK / noc)</option>
                                 <option value="superior">Superior s výhledem (... CZK / noc)</option>
                                 <option value="family" selected>Rodinné Apartmá (... CZK / noc)</option>
-                                <option value="cottage">Útulná Samostatná Chata (... CZK / noc)</option>
+                                <option value="cottage">Samostatná Chata (... CZK / noc)</option>
                             </select>
                         </div>
                         <div>
@@ -547,8 +542,7 @@
                                 class="w-full bg-warmbg border border-beige-300 rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-ochre-500 focus:outline-none">
                         </div>
                         <div>
-                            <label class="block text-xs font-bold uppercase tracking-wide text-wood mb-1">Děti (do 12
-                                let)</label>
+                            <label class="block text-xs font-bold uppercase tracking-wide text-wood mb-1">Děti</label>
                             <select id="calc-children"
                                 class="w-full bg-warmbg border border-beige-300 rounded-xl px-4 py-3 text-sm font-medium focus:ring-2 focus:ring-ochre-500 focus:outline-none">
                                 <option value="0">Bez dětí</option>
@@ -572,7 +566,7 @@
                         <div>
                             <label class="block text-xs font-bold uppercase tracking-wide text-wood mb-1">Telefonní
                                 číslo</label>
-                            <input type="tel" id="calc-phone" required placeholder="+420 777 123 456"
+                            <input type="tel" id="calc-phone" required placeholder="+420 ... ... ..."
                                 class="w-full bg-warmbg border border-beige-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-ochre-500 focus:outline-none">
                         </div>
                     </div>
@@ -580,8 +574,7 @@
                     <div>
                         <label class="block text-xs font-bold uppercase tracking-wide text-wood mb-1">Poznámka /
                             Zvláštní přání</label>
-                        <textarea id="calc-notes" rows="2"
-                            placeholder="Např.: dětská postýlka na pokoj, alergie na potraviny..."
+                        <textarea id="calc-notes" rows="2" placeholder="Např.: dětská postýlka na pokoj, alergie..."
                             class="w-full bg-warmbg border border-beige-300 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-ochre-500 focus:outline-none"></textarea>
                     </div>
 
@@ -618,7 +611,7 @@
                             </div>
                             <div class="flex justify-between border-b border-forest-600/50 pb-2">
                                 <span class="text-beige-300">Snídaně:</span>
-                                <span class="font-semibold text-emerald-300">Zahrnuta zdarma</span>
+                                <span class="font-semibold text-emerald-300">Zahrnuta v ceně</span>
                             </div>
                         </div>
                     </div>
@@ -630,7 +623,7 @@
                                 CZK</span>
                         </div>
                         <p class="text-xs text-beige-300 leading-relaxed mt-2">
-                            *Platba probíhá až na místě při příjezdu. Storno zdarma do 48 hodin před příjezdem.
+                            *Platba probíhá až na místě při příjezdu. Storno zdarma.
                         </p>
                     </div>
                 </div>
@@ -638,229 +631,88 @@
         </div>
     </section>
 
-    <!-- Reviews Section -->
-    <section id="reviews" class="py-20 bg-beige-100/40 border-t border-beige-200">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <span class="text-ochre-500 font-semibold tracking-wider text-sm uppercase">Upřímné dojmy</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest-800 mt-2 mb-4">Hodnocení našich hostů
-                </h2>
-                <p class="text-gray-600">Největší odměnou pro nás jsou úsměvy rodin, které se k nám rády vracejí.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Review 1 -->
-                <div
-                    class="bg-warmcard p-8 rounded-3xl border border-beige-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-ochre-500 mb-4 text-sm">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-700 italic text-sm mb-6 leading-relaxed">
-                            «Strávili jsme zde skvělý týden s dvěma dětmi v Rodinném Apartmá. Děti byly nadšené z hřiště
-                            a bazénu, my s manželem jsme si konečně odpočinuli. Snídaně byly vynikající a opravdu
-                            poctivé!»
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-beige-100 pt-4">
-                        <img src=""
-                            alt="Rodina Svobodova" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <h4 class="font-bold text-forest-800 text-sm">Marie a Rodina Svobodova</h4>
-                            <span class="text-xs text-gray-500">Praha • Pobyt v červenci</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 2 -->
-                <div
-                    class="bg-warmcard p-8 rounded-3xl border border-beige-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-ochre-500 mb-4 text-sm">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-700 italic text-sm mb-6 leading-relaxed">
-                            «Neskutečně útulné místo! Pronajali jsme si samostatnou chatu. Večery u krbu s čajem měly
-                            neopakovatelnou atmosféru. Personál byl velmi milý a vstřícný. Určitě přijedeme znovu.»
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-beige-100 pt-4">
-                        <img src=""
-                            alt="Petr a Lucie" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <h4 class="font-bold text-forest-800 text-sm">Petr a Lucie Dvořákovi</h4>
-                            <span class="text-xs text-gray-500">Brno • Pobyt v srpnu</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Review 3 -->
-                <div
-                    class="bg-warmcard p-8 rounded-3xl border border-beige-200 shadow-sm flex flex-col justify-between">
-                    <div>
-                        <div class="flex text-ochre-500 mb-4 text-sm">
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                            <i class="fa-solid fa-star"></i>
-                        </div>
-                        <p class="text-gray-700 italic text-sm mb-6 leading-relaxed">
-                            «Ideální hotel pro malé děti. K dispozici byla dětská postýlka, jídelní židlička i hračky.
-                            Čistota na jedničku. Děkujeme za nádhernou rodinnou atmosféru!»
-                        </p>
-                    </div>
-                    <div class="flex items-center gap-4 border-t border-beige-100 pt-4">
-                        <img src=""
-                            alt="Jana s rodinou" class="w-12 h-12 rounded-full object-cover">
-                        <div>
-                            <h4 class="font-bold text-forest-800 text-sm">Jana s rodinou</h4>
-                            <span class="text-xs text-gray-500">Plzeň • Pobyt v září</span>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Contacts & Map Section -->
+    <!-- Contacts Section -->
     <section id="contacts" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-
-            <!-- Contact Info -->
-            <div class="space-y-8">
-                <div>
-                    <span class="text-ochre-500 font-semibold tracking-wider text-sm uppercase">Jsme tu pro vás</span>
-                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest-800 mt-2 mb-4">Kontaktujte nás</h2>
-                    <p class="text-gray-600">Máte dotaz nebo si přejete upřesnit detaily před rezervací? Zavolejte nám
-                        nebo napište email.</p>
-                </div>
-
-                <div class="space-y-6">
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-beige-100 text-forest-800 flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-location-dot text-ochre-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-forest-800 text-base">Adresa hotelu</h4>
-                            <p class="text-gray-600 text-sm">Lesní 124/8, 381 01 Český Krumlov / Šumava</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-beige-100 text-forest-800 flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-phone text-ochre-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-forest-800 text-base">Infolinka a Recepce</h4>
-                            <p class="text-gray-600 text-sm">+420 777 888 999 (Recepce)</p>
-                            <p class="text-gray-600 text-sm">+420 608 123 456 (WhatsApp / rezervace)</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-beige-100 text-forest-800 flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-envelope text-ochre-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-forest-800 text-base">E-mail</h4>
-                            <p class="text-gray-600 text-sm">recepce@utulnykout.cz</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4">
-                        <div
-                            class="w-12 h-12 rounded-2xl bg-beige-100 text-forest-800 flex items-center justify-center text-xl shrink-0">
-                            <i class="fa-solid fa-clock text-ochre-500"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold text-forest-800 text-base">Provozní doba</h4>
-                            <p class="text-gray-600 text-sm">Recepce: Denně 08:00 – 20:00</p>
-                            <p class="text-gray-600 text-sm">Check-in: od 14:00 | Check-out: do 10:00</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Social Media -->
-                <div class="pt-4">
-                    <h4 class="font-bold text-forest-800 text-sm mb-3">Sledujte nás na sociálních sítích:</h4>
-                    <div class="flex gap-3">
-                        <a href="#"
-                            class="w-10 h-10 rounded-xl bg-forest-700 text-white flex items-center justify-center hover:bg-ochre-500 transition-colors"><i
-                                class="fa-brands fa-instagram"></i></a>
-                        <a href="#"
-                            class="w-10 h-10 rounded-xl bg-forest-700 text-white flex items-center justify-center hover:bg-ochre-500 transition-colors"><i
-                                class="fa-brands fa-facebook-f"></i></a>
-                    </div>
-                </div>
+        <div
+            class="max-w-2xl mx-auto text-center space-y-8 bg-warmcard p-8 sm:p-12 rounded-3xl border border-beige-200 shadow-sm">
+            <div>
+                <span class="text-ochre-500 font-semibold tracking-wider text-sm uppercase">Kontaktujte nás</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-forest-800 mt-2 mb-4">Rodinný hotel</h2>
+                <p class="text-gray-600">Máte dotaz nebo si přejete upřesnit detaily před rezervací? Zavolejte нам.</p>
             </div>
 
-            <!-- Styled Map Box Placeholder -->
-            <div class="h-[420px] rounded-3xl overflow-hidden border-2 border-beige-200 shadow-md relative bg-beige-200 flex flex-col justify-center items-center text-center p-6"
-                style="background-image: radial-gradient(#D5BC9F 1px, transparent 1px); background-size: 20px 20px;">
-                <div class="bg-warmcard p-6 rounded-2xl shadow-xl max-w-sm border border-beige-300">
+            <div class="flex flex-col items-center justify-center gap-6">
+                <div class="flex items-center gap-4">
                     <div
-                        class="w-12 h-12 bg-ochre-500 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl shadow">
-                        <i class="fa-solid fa-hotel"></i>
+                        class="w-12 h-12 rounded-2xl bg-beige-100 text-forest-800 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-phone text-ochre-500"></i>
                     </div>
-                    <h4 class="font-serif font-bold text-lg text-forest-800">Rodinný Hotel «Útulný Kout»</h4>
-                    <p class="text-xs text-gray-600 mt-1 mb-4">Lesní 124/8, Šumava</p>
-                    <a href="" target="_blank"
-                        class="inline-flex items-center gap-2 bg-forest-700 hover:bg-forest-800 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-colors">
-                        <i class="fa-solid fa-map-location-dot"></i>
-                        <span>Otevřít v Google Maps</span>
-                    </a>
+                    <div class="text-left">
+                        <h4 class="font-bold text-forest-800 text-base">Infolinka a Recepce</h4>
+                        <p class="text-gray-600 text-sm font-semibold">+420 ... ... ...</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div
+                        class="w-12 h-12 rounded-2xl bg-beige-100 text-forest-800 flex items-center justify-center text-xl shrink-0">
+                        <i class="fa-solid fa-clock text-ochre-500"></i>
+                    </div>
+                    <div class="text-left">
+                        <h4 class="font-bold text-forest-800 text-base">Provozní doba</h4>
+                        <p class="text-gray-600 text-sm">Recepce: Denně 08:00 – 20:00</p>
+                    </div>
                 </div>
             </div>
 
+            <!-- Social Media -->
+            <div class="pt-4 border-t border-beige-200">
+                <h4 class="font-bold text-forest-800 text-sm mb-3">Sociální sítě:</h4>
+                <div class="flex justify-center gap-3">
+                    <a href="#"
+                        class="w-10 h-10 rounded-xl bg-forest-700 text-white flex items-center justify-center hover:bg-ochre-500 transition-colors"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="#"
+                        class="w-10 h-10 rounded-xl bg-forest-700 text-white flex items-center justify-center hover:bg-ochre-500 transition-colors"><i
+                            class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer Section -->
-    <footer class="bg-forest-800 text-beige-100 pt-16 pb-8 border-t border-forest-700">
+    <footer class="bg-forest-800 text-beige-100 pt-12 pb-8 border-t border-forest-700">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-forest-700">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-forest-700">
 
                 <!-- Col 1: About -->
                 <div class="space-y-4">
                     <div class="flex items-center gap-3">
                         <div
                             class="w-8 h-8 rounded-full bg-ochre-500 text-white flex items-center justify-center font-serif text-sm font-bold">
-                            ÚK</div>
-                        <span class="font-serif text-xl font-bold text-white tracking-wide">Útulný Kout</span>
+                            <i class="fa-solid fa-hotel text-xs"></i>
+                        </div>
+                        <span class="font-serif text-xl font-bold text-white tracking-wide">Rodinný hotel</span>
                     </div>
                     <p class="text-xs text-beige-300 leading-relaxed">
-                        Rodinný hotel vytvořený s láskou k detailům a neomezenou péčí o pohodlí a spokojenost našich
-                        hostů.
+                        Příjemný hotel vytvořený s láskou k detailům a péčí o pohodlí a spokojenost všech hostů.
                     </p>
                 </div>
 
                 <!-- Col 2: Navigation Links -->
                 <div>
-                    <h4 class="font-bold text-white text-sm mb-4">Rychlá navigace</h4>
+                    <h4 class="font-bold text-white text-sm mb-4">Navigace</h4>
                     <ul class="space-y-2 text-xs text-beige-300">
                         <li><a href="#about" class="hover:text-ochre-500 transition-colors">O nás</a></li>
                         <li><a href="#rooms" class="hover:text-ochre-500 transition-colors">Pokoje a ceník</a></li>
                         <li><a href="#amenities" class="hover:text-ochre-500 transition-colors">Služby a vybavení</a>
                         </li>
                         <li><a href="#booking" class="hover:text-ochre-500 transition-colors">Rezervace pobytu</a></li>
-                        <li><a href="#reviews" class="hover:text-ochre-500 transition-colors">Hodnocení hostů</a></li>
+                        <li><a href="#contacts" class="hover:text-ochre-500 transition-colors">Kontakt</a></li>
                     </ul>
                 </div>
 
-                <!-- Col 3: Legal & Rules -->
+                <!-- Col 3: Information -->
                 <div>
                     <h4 class="font-bold text-white text-sm mb-4">Informace</h4>
                     <ul class="space-y-2 text-xs text-beige-300">
@@ -869,21 +721,7 @@
                         </li>
                         <li><a href="#" class="hover:text-ochre-500 transition-colors">Často kladené dotazy (FAQ)</a>
                         </li>
-                        <li><a href="#" class="hover:text-ochre-500 transition-colors">Stravování a jídelní lístek</a>
-                        </li>
                     </ul>
-                </div>
-
-                <!-- Col 4: Newsletter -->
-                <div>
-                    <h4 class="font-bold text-white text-sm mb-4">Speciální nabídky</h4>
-                    <p class="text-xs text-beige-300 mb-3">Odebírejte naše rodinné akce a sezónní slevy:</p>
-                    <form onsubmit="event.preventDefault(); alert('Děkujeme za odběr newslettru!');" class="space-y-2">
-                        <input type="email" placeholder="Váš E-mail" required
-                            class="w-full bg-forest-700 border border-forest-600 rounded-xl px-3 py-2 text-xs text-white placeholder-beige-300 focus:outline-none focus:ring-1 focus:ring-ochre-500">
-                        <button type="submit"
-                            class="w-full bg-ochre-500 hover:bg-ochre-600 text-white font-semibold py-2 rounded-xl text-xs transition-colors">Odebírat</button>
-                    </form>
                 </div>
 
             </div>
@@ -891,13 +729,13 @@
             <!-- Bottom Copyright -->
             <div
                 class="pt-8 text-center text-xs text-beige-300 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p>© 2026 Rodinný Hotel «Útulný Kout». Všechna práva vyhrazena.</p>
-                <p class="text-beige-300/60">Vytvořeno s láskou pro dokonalou rodinnou dovolenou ❤️</p>
+                <p>© Rodinný hotel. Všechna práva vyhrazena.</p>
+                <p class="text-beige-300/60">Vytvořeno pro dokonalou rodinnou dovolenou ❤️️</p>
             </div>
         </div>
     </footer>
 
-    <!-- Modal Booking Confirmation Banner (Hidden by default) -->
+    <!-- Modal Booking Confirmation -->
     <div id="booking-modal"
         class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
         <div
@@ -919,11 +757,10 @@
                 <div class="flex justify-between border-t border-beige-200 pt-1.5"><span>Celková cena:</span><span
                         id="modal-total" class="font-bold text-ochre-500 text-sm">... CZK</span></div>
             </div>
-            <p class="text-xs text-gray-500">Náš recepční vás bude kontaktovat během několika minut pro поттверждение а
-                потврдни деталей.</p>
+            <p class="text-xs text-gray-500">Budeme vás kontaktovat pro potvrzení rezervace.</p>
             <button onclick="closeModal()"
                 class="w-full bg-forest-700 hover:bg-forest-800 text-white font-semibold py-3 rounded-xl transition-colors">
-                Skvělé, děkuji!
+                Rozumím
             </button>
         </div>
     </div>
@@ -1014,12 +851,10 @@
         function selectRoom(roomValue, roomName) {
             calcRoom.value = roomValue;
             updateCalculator();
-
-            // Smooth scroll to booking section
             document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Attach event listeners for real-time updates
+        // Event listeners for real-time updates
         calcRoom.addEventListener('change', updateCalculator);
         calcCheckin.addEventListener('change', () => {
             if (calcCheckin.value >= calcCheckout.value) {
