@@ -237,6 +237,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             color: var(--text-dark);
             width: 100%;
+            box-sizing: border-box;
         }
 
         .booking-form {
@@ -244,6 +245,7 @@
             grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 16px;
             align-items: end;
+            width: 100%;
         }
 
         .form-group {
@@ -252,6 +254,7 @@
             gap: 6px;
             text-align: left;
             width: 100%;
+            box-sizing: border-box;
         }
 
         .form-group label {
@@ -272,6 +275,15 @@
             background: #FAFAFA;
             color: var(--text-dark);
             width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input[type="date"].form-control {
+            min-height: 46px;
+            line-height: 1.2;
         }
 
         .form-control:focus {
@@ -307,7 +319,7 @@
             gap: 30px;
         }
 
-        /* ROOM CARD WITH HOVER ANIMATION DEMO */
+        /* ROOM CARD WITH ANIMATION  */
         .room-card {
             background: var(--bg-card);
             border-radius: var(--radius-md);
@@ -479,6 +491,7 @@
             margin-bottom: 80px;
             box-shadow: var(--shadow-sm);
             border: 1px solid var(--border-color);
+            box-sizing: border-box;
         }
 
         .calc-container {
