@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rodinný hotel</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg-cream: #FAF7F2;
+            --bg-card: #FFFFFF;
+            --text-dark: #1E2320;
+            --text-muted: #6B7280;
+            --accent-green: #1C3121;
+            --accent-green-hover: #26422D;
+            --accent-orange: #E07A5F;
+            --accent-orange-hover: #D0694E;
+            --border-color: #E5E7EB;
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius-sm: 8px;
+            --radius-md: 16px;
+            --radius-lg: 24px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-dark);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-orange);
+            color: #FFF;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-orange-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--accent-green);
+            color: #FFF;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent-green-hover);
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--accent-green);
+            color: var(--accent-green);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-green);
+            color: #FFF;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(28, 49, 33, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            white-space: nowrap;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        nav {
+            display: flex;
+            gap: 28px;
+        }
+
+        nav a {
+            font-weight: 500;
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.85);
+            transition: var(--transition);
+        }
+
+        nav a:hover {
+            color: #FFFFFF;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #FFFFFF;
+            padding: 6px;
+        }
+
+        .btn-text-mobile {
+            display: inline-block;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            padding: 70px 0 100px;
+            background: linear-gradient(180deg, #1C3121 0%, #2A4730 65%, #FFFFFF 100%);
+            text-align: center;
+            color: #FFFFFF;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.12);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 24px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .hero h1 {
+            font-size: 3.6rem;
+            margin-bottom: 20px;
+            line-height: 1.15;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 650px;
+            margin: 0 auto 50px;
+            font-weight: 300;
+        }
+
+        /* Quick Search Bar */
+        .booking-bar {
+            background: #FFFFFF;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            max-width: 1000px;
+            margin: 0 auto;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--text-dark);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 16px;
+            align-items: end;
+            width: 100%;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-group label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+
+        .form-control {
+            padding: 12px 14px;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+            background: #FAFAFA;
+            color: var(--text-dark);
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        input[type="date"].form-control {
+            min-height: 46px;
+            line-height: 1.2;
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-green);
+            background: #FFF;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.4rem;
+            color: var(--accent-green);
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Rooms Grid 2x2 on Desktop */
+        .rooms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        /* ROOM CARD WITH HOVER ANIMATION DEMO */
+        .room-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            transition: transform 0.05s steps(2, start), box-shadow 0.1s ease;
+        }
+
+        .room-card:hover {
+            transform: rotate(5deg) scale(1.08) translateY(-12px) translateX(8px);
+            box-shadow: 25px 20px 30px rgba(0, 0, 0, 0.15);
+            animation: cardJitter 0.2s infinite alternate;
+        }
+
+        @keyframes cardJitter {
+            0% {
+                transform: rotate(5deg) scale(1.08) translateY(-12px) translateX(8px);
+            }
+
+            100% {
+                transform: rotate(3deg) scale(1.06) translateY(-8px) translateX(12px);
+            }
+        }
+
+        /* Photo Placeholder & Desktop Image Display */
+        .room-image-container {
+            width: 100%;
+            height: 240px;
+            position: relative;
+            overflow: hidden;
+            background-color: #F3F4F6;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .room-img-desktop {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .room-image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: var(--text-muted);
+        }
+
+        /* Display real photo on desktop screens */
+        @media (min-width: 769px) {
+            .room-img-desktop {
+                display: block;
+            }
+
+            .room-image-placeholder.has-desktop-img {
+                display: none;
+            }
+        }
+
+        .badge-detail {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            backdrop-filter: blur(4px);
+            z-index: 2;
+        }
+
+        .room-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .room-title {
+            font-size: 1.3rem;
+            margin-bottom: 8px;
+        }
+
+        .room-desc {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            flex-grow: 1;
+        }
+
+        .room-features {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .room-feature {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .room-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 16px;
+            border-top: 1px solid var(--border-color);
+            gap: 10px;
+        }
+
+        .room-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-green);
+        }
+
+        .room-price span {
+            font-size: 0.85rem;
+            font-weight: 400;
+            color: var(--text-muted);
+        }
+
+        /* Amenities */
+        .amenities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .amenity-card {
+            background: var(--bg-card);
+            padding: 28px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+        }
+
+        .amenity-card:hover {
+            border-color: var(--accent-orange);
+        }
+
+        .amenity-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(224, 122, 95, 0.1);
+            color: var(--accent-orange);
+            border-radius: var(--radius-sm);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+
+        .amenity-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .amenity-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Calculator & Booking Section */
+        .booking-section {
+            background: #FFFFFF;
+            border-radius: var(--radius-lg);
+            padding: 50px;
+            margin-bottom: 80px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-color);
+            box-sizing: border-box;
+        }
+
+        .calc-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .form-grid-2col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .calc-summary {
+            background: #FAFAFA;
+            padding: 30px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .calc-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border-color);
+            font-size: 0.95rem;
+        }
+
+        .calc-row.total {
+            border-bottom: none;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-green);
+            padding-top: 20px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(28, 49, 33, 0.1);
+            color: var(--accent-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 250px;
+            background: #E5E7EB;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--text-dark);
+            color: #E6E0D8;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: #FFF;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        /* Modals */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--bg-card);
+            padding: 40px;
+            border-radius: var(--radius-md);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-content-large {
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: var(--radius-md);
+            max-width: 750px;
+            width: 100%;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .close-modal-btn {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #F3F4F6;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .gallery-preview {
+            width: 100%;
+            height: 320px;
+            background: #F3F4F6;
+            border-radius: var(--radius-sm);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .gallery-thumbs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .thumb-placeholder {
+            height: 80px;
+            background: #F3F4F6;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .thumb-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .room-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 20px 0;
+            padding: 16px 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .spec-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            background: #F9FAFB;
+            padding: 6px 12px;
+            border-radius: 20px;
+        }
+
+        /* MOBILE RESPONSIVE MEDIA QUERIES */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .logo {
+                font-size: 1.15rem;
+            }
+
+            .logo-icon {
+                width: 30px;
+                height: 30px;
+            }
+
+            .btn-text-mobile {
+                display: none;
+            }
+
+            .header-content .btn-primary {
+                padding: 8px 12px;
+                border-radius: 6px;
+            }
+
+            nav {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: #1C3121;
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                box-shadow: var(--shadow-md);
+            }
+
+            nav.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 50px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2.1rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+                margin-bottom: 30px;
+            }
+
+            .booking-bar {
+                padding: 16px;
+                border-radius: 16px;
+            }
+
+            .booking-form {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .rooms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid-2col {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .calc-container,
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .booking-section {
+                padding: 20px 16px;
+                border-radius: 16px;
+            }
+
+            .room-card:hover {
+                transform: none;
+                animation: none;
+            }
+
+            .gallery-preview {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">
+                <div class="logo-icon"><i data-lucide="trees" color="#FFF" size="18"></i></div>
+                <span>Rodinný hotel</span>
+            </a>
+
+            <nav id="nav-menu">
+                <a href="#o-nas">O nás</a>
+                <a href="#pokoje">Pokoje a Ceník</a>
+                <a href="#sluzby">Služby</a>
+                <a href="#rezervace">Rezervace</a>
+                <a href="#kontakt">Kontakt</a>
+            </nav>
+
+            <div style="display: flex; gap: 8px; align-items: center;">
+                <a href="#rezervace" class="btn btn-primary">
+                    <i data-lucide="calendar" size="16"></i> <span class="btn-text-mobile">Rezervovat pobyt</span>
+                </a>
+                <button class="mobile-menu-btn" id="menu-toggle">
+                    <i data-lucide="menu" size="24"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <i data-lucide="heart" size="14" fill="#E07A5F" color="#E07A5F"></i>
+                <span>Vaše dokonalá rodinná dovolená</span>
+            </div>
+
+            <h1>Vítejte v našem Rodinném<br>hotelu</h1>
+            <p>Užijte si klid, poctivou domácí kuchyni a péči o každého člena vaší rodiny v příjemném prostředí.</p>
+
+            <div class="booking-bar">
+                <form class="booking-form" onsubmit="event.preventDefault(); scrollToCalc();">
+                    <div class="form-group">
+                        <label>PŘÍJEZD</label>
+                        <input type="date" id="hero-checkin" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ODJEZD</label>
+                        <input type="date" id="hero-checkout" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>HOSTÉ</label>
+                        <select id="hero-guests" class="form-control">
+                            <option value="1">1 Dospělý</option>
+                            <option value="2" selected>2 Dospělí</option>
+                            <option value="3">3 Dospělí</option>
+                            <option value="4">4 Dospělí</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>KATEGORIE</label>
+                        <select id="hero-room" class="form-control">
+                            <option value="Jednolůžkový pokoj">Jednolůžkový pokoj</option>
+                            <option value="Dvoulůžkový pokoj s manželskou postelí">Dvoulůžkový s manželskou postelí
+                            </option>
+                            <option value="Dvoulůžkový pokoj se dvěma lůžky">Dvoulůžkový se 2 lůžky</option>
+                            <option value="Čtyřlůžkový pokoj">Čtyřlůžkový pokoj</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">
+                            <i data-lucide="search" size="16"></i> Hledat
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pokoje section -->
+    <section id="pokoje" class="container">
+        <div class="section-title">
+            <h2>Naše Pokoje</h2>
+            <p>Klikněte na pokoj pro zobrazení detailů a fotografií</p>
+        </div>
+
+        <div class="rooms-grid">
+            <!-- Pokoj 1: Jednolůžkový pokoj -->
+            <div class="room-card"
+                onclick="openRoomModal('Jednolůžkový pokoj', 'Útulný pokoj ideální pro jednotlivce nebo pracovní cesty s veškerým potřebným komfortem.', '1 Host', '1 Samostatné lůžko', ['images/1lužko1osoba-interier1.jpg', 'images/1lužko1osoba-interier2.jpg', 'images/1lužko1osoba-bath.jpg'])">
+                <div class="room-image-container">
+                    <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
+                    <img src="images/1lužko1osoba-interier1.jpg" alt="Jednolůžkový pokoj" class="room-img-desktop"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="room-image-placeholder has-desktop-img">
+                        <i data-lucide="camera" size="36"></i>
+                        <span>Zde bude fotografie pokoje</span>
+                    </div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Jednolůžkový pokoj</h3>
+                    <p class="room-desc">Útulný pokoj ideální pro jednotlivce nebo pracovní cesty s veškerým potřebným
+                        komfortem.</p>
+                    <div class="room-features">
+                        <div class="room-feature"><i data-lucide="user" size="16"></i> 1 Host</div>
+                        <div class="room-feature"><i data-lucide="bed" size="16"></i> 1 Lůžko</div>
+                    </div>
+                    <div class="room-footer">
+                        <div class="room-price">... CZK <span>/ noc</span></div>
+                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"
+                            onclick="event.stopPropagation(); selectRoom('Jednolůžkový pokoj');">Vybrat</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pokoj 2: Dvoulůžkový pokoj s manželskou postelí -->
+            <div class="room-card"
+                onclick="openRoomModal('Dvoulůžkový pokoj s manželskou postelí', 'Komfortní pokoj s velkou manželskou postelí, vhodný pro páry hledající pohodlí a klid.', '2 Hosté', '1 Manželská postel', ['images/1lužko2osoby-interier1.jpg', 'images/1lužko2osoby-interier2.jpg', 'images/1lužko2osoby-bath.jpg'])">
+                <div class="room-image-container">
+                    <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
+                    <img src="images/1lužko2osoby-interier1.jpg" alt="Dvoulůžkový pokoj s manželskou postelí"
+                        class="room-img-desktop"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="room-image-placeholder has-desktop-img">
+                        <i data-lucide="camera" size="36"></i>
+                        <span>Zde bude fotografie pokoje</span>
+                    </div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Dvoulůžkový pokoj s manželskou postelí</h3>
+                    <p class="room-desc">Komfortní pokoj s velkou manželskou postelí, vhodný pro páry hledající pohodlí
+                        a klid.</p>
+                    <div class="room-features">
+                        <div class="room-feature"><i data-lucide="users" size="16"></i> 2 Hosté</div>
+                        <div class="room-feature"><i data-lucide="bed" size="16"></i> 1 Manželská postel</div>
+                    </div>
+                    <div class="room-footer">
+                        <div class="room-price">... CZK <span>/ noc</span></div>
+                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"
+                            onclick="event.stopPropagation(); selectRoom('Dvoulůžkový pokoj s manželskou postelí');">Vybrat</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pokoj 3: Dvoulůžkový pokoj se dvěma lůžky -->
+            <div class="room-card"
+                onclick="openRoomModal('Dvoulůžkový pokoj se dvěma lůžky', 'Prostorný pokoj se dvěma oddělenými postelemi, ideální pro přátele nebo kolegy.', '2 Hosté', '2 Oddělená lůžka', ['images/2lužka3osoby-interier1.jpg', 'images/2lužka3osoby-interier2.jpg', 'images/2lužka3osoby-interier3.jpg', 'images/2lužka3osoby-bath.jpg'])">
+                <div class="room-image-container">
+                    <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
+                    <img src="images/2lužka3osoby-interier1.jpg" alt="Dvoulůžkový pokoj se dvěma lůžky"
+                        class="room-img-desktop"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="room-image-placeholder has-desktop-img">
+                        <i data-lucide="camera" size="36"></i>
+                        <span>Zde bude fotografie pokoje</span>
+                    </div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Dvoulůžkový pokoj se dvěma lůžky</h3>
+                    <p class="room-desc">Prostorný pokoj se dvěma oddělenými postelemi, ideální pro přátele nebo kolegy.
+                    </p>
+                    <div class="room-features">
+                        <div class="room-feature"><i data-lucide="users" size="16"></i> 2 Hosté</div>
+                        <div class="room-feature"><i data-lucide="bed" size="16"></i> 2 Oddělená lůžka</div>
+                    </div>
+                    <div class="room-footer">
+                        <div class="room-price">... CZK <span>/ noc</span></div>
+                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"
+                            onclick="event.stopPropagation(); selectRoom('Dvoulůžkový pokoj se dvěma lůžky');">Vybrat</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pokoj 4: Čtyřlůžkový pokoj -->
+            <div class="room-card"
+                onclick="openRoomModal('Čtyřlůžkový pokoj', 'Velký rodinný pokoj navržený pro pohodlný pobyt až čtyř osob se vším zázemím.', '4 Hosté', 'Více lůžek', ['images/4lužka-interier1.jpg', 'images/4lužka-interier2.jpg', 'images/4lužka-interier3.jpg', 'images/4lužka-bath.jpg'])">
+                <div class="room-image-container">
+                    <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
+                    <img src="images/4lužka-interier1.jpg" alt="Čtyřlůžkový pokoj" class="room-img-desktop"
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="room-image-placeholder has-desktop-img">
+                        <i data-lucide="camera" size="36"></i>
+                        <span>Zde bude fotografie pokoje</span>
+                    </div>
+                </div>
+                <div class="room-content">
+                    <h3 class="room-title">Čtyřlůžkový pokoj</h3>
+                    <p class="room-desc">Velký rodinný pokoj navržený pro pohodlný pobyt až čtyř osob se vším zázemím.
+                    </p>
+                    <div class="room-features">
+                        <div class="room-feature"><i data-lucide="users" size="16"></i> 4 Hosté</div>
+                        <div class="room-feature"><i data-lucide="bed" size="16"></i> Více lůžek</div>
+                    </div>
+                    <div class="room-footer">
+                        <div class="room-price">... CZK <span>/ noc</span></div>
+                        <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"
+                            onclick="event.stopPropagation(); selectRoom('Čtyřlůžkový pokoj');">Vybrat</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Služby section -->
+    <section id="sluzby" style="background: #F4EFEA;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Služby a Vybavení</h2>
+                <p>Postaráme se o to, aby byl váš pobyt maximálně příjemný</p>
+            </div>
+
+            <div class="amenities-grid">
+                <div class="amenity-card">
+                    <div class="amenity-icon"><i data-lucide="coffee"></i></div>
+                    <h3 class="amenity-title">Domácí Snídaně</h3>
+                    <p class="amenity-desc">Každé ráno připravujeme čerstvé snídaně z lokálních surovin.</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon"><i data-lucide="wifi"></i></div>
+                    <h3 class="amenity-title">Rychlé Wi-Fi</h3>
+                    <p class="amenity-desc">Bezplatné bezdrátové připojení k internetu v celém areálu.</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon"><i data-lucide="parking-square"></i></div>
+                    <h3 class="amenity-title">Parkování zdarma</h3>
+                    <p class="amenity-desc">Soukromé a bezpečné parkoviště přímo u hotelu.</p>
+                </div>
+
+                <div class="amenity-card">
+                    <div class="amenity-icon"><i data-lucide="smile"></i></div>
+                    <h3 class="amenity-title">Dětský koutek</h3>
+                    <p class="amenity-desc">Bezpečné prostředí a hřiště pro zábavu vašich dětí.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kalkulačka a Rezervace -->
+    <section id="rezervace" class="container">
+        <div class="section-title">
+            <h2>Rezervace Ubytování</h2>
+            <p>Spočítejte si cenu a rezervujte si pokoj během minuty</p>
+        </div>
+
+        <div class="booking-section">
+            <div class="calc-container">
+                <!-- Formular -->
+                <form id="main-booking-form" onsubmit="handleBooking(event)">
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label>Typ pokoje</label>
+                        <select id="calc-room" class="form-control" onchange="calculateTotal()">
+                            <option value="Jednolůžkový pokoj">Jednolůžkový pokoj</option>
+                            <option value="Dvoulůžkový pokoj s manželskou postelí">Dvoulůžkový pokoj s manželskou
+                                postelí</option>
+                            <option value="Dvoulůžkový pokoj se dvěma lůžky">Dvoulůžkový pokoj se dvěma lůžky</option>
+                            <option value="Čtyřlůžkový pokoj">Čtyřlůžkový pokoj</option>
+                        </select>
+                    </div>
+
+                    <div class="form-grid-2col">
+                        <div class="form-group">
+                            <label>Datum příjezdu</label>
+                            <input type="date" id="calc-checkin" class="form-control" onchange="calculateTotal()"
+                                required>
+                        </div>
+                        <div class="form-group">
+                            <label>Datum odjezdu</label>
+                            <input type="date" id="calc-checkout" class="form-control" onchange="calculateTotal()"
+                                required>
+                        </div>
+                    </div>
+
+                    <div class="form-grid-2col">
+                        <div class="form-group">
+                            <label>Jméno a Příjmení</label>
+                            <input type="text" class="form-control" placeholder="Jan Novák" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Telefonní číslo</label>
+                            <input type="tel" class="form-control" placeholder="+420 123 456 789" required>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">
+                        Odeslat nezávaznou rezervaci
+                    </button>
+                </form>
+
+                <!-- Summary -->
+                <div class="calc-summary">
+                    <div>
+                        <h3 style="margin-bottom: 20px; color: var(--accent-green);">Přehled rezervace</h3>
+                        <div class="calc-row">
+                            <span>Vybraný pokoj:</span>
+                            <strong id="summary-room">Jednolůžkový pokoj</strong>
+                        </div>
+                        <div class="calc-row">
+                            <span>Počet nocí:</span>
+                            <strong id="summary-nights">0</strong>
+                        </div>
+                    </div>
+
+                    <div class="calc-row total">
+                        <span>Celková cena:</span>
+                        <span id="summary-total">... CZK</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontakt section -->
+    <section id="kontakt" class="container">
+        <div class="section-title">
+            <h2>Kontaktujte Nás</h2>
+            <p>Jsme tu pro vás. Rádi zodpovíme jakékoliv dotazy.</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Rodinný hotel</h3>
+                <p>Pro rezervace nebo dotazy nás neváhejte kontaktovat telefonicky.</p>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i data-lucide="phone"></i></div>
+                    <div>
+                        <strong>Telefon</strong>
+                        <p>+420 123 456 789</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i data-lucide="clock"></i></div>
+                    <div>
+                        <strong>Recepce</strong>
+                        <p>Po - Ne: 08:00 - 20:00</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-placeholder">
+                <div style="text-align: center;">
+                    <i data-lucide="map-pin" size="40" style="color: var(--accent-orange); margin-bottom: 8px;"></i>
+                    <p>Zde bude mapa s lokalitou hotelu</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Rodinný hotel</div>
+                <p style="font-size: 0.9rem; color: #BBB;">Příjemný rodinný hotel pro váš dokonalý odpočinek.</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Rodinný hotel. Všechna práva vyhrazena.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Detail Pokoju Modal -->
+    <div id="room-detail-modal" class="modal">
+        <div class="modal-content-large">
+            <button class="close-modal-btn" onclick="closeRoomModal()"><i data-lucide="x" size="18"></i></button>
+
+            <h2 id="modal-room-title" style="margin-bottom: 12px; color: var(--accent-green);">Název Pokoje</h2>
+
+            <div class="gallery-preview" id="modal-main-preview">
+                <i data-lucide="image" size="48" style="opacity: 0.5; margin-bottom: 8px;"></i>
+                <span>Hlavní fotografie pokoje</span>
+            </div>
+
+            <div class="gallery-thumbs" id="modal-thumbs-container">
+                <div class="thumb-placeholder"><i data-lucide="camera" size="16"></i> Interiér</div>
+                <div class="thumb-placeholder"><i data-lucide="bed" size="16"></i> Postel</div>
+                <div class="thumb-placeholder"><i data-lucide="bath" size="16"></i> Koupelna</div>
+            </div>
+
+            <p id="modal-room-desc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
+                Popis pokoje...
+            </p>
+
+            <div class="room-specs">
+                <div class="spec-item"><i data-lucide="wifi" size="14"></i> Wi-Fi zdarma</div>
+                <div class="spec-item"><i data-lucide="tv" size="14"></i> TV</div>
+                <div class="spec-item"><i data-lucide="bath" size="14"></i> Vlastní koupelna</div>
+                <div class="spec-item"><i data-lucide="wind" size="14"></i> Fén</div>
+                <div class="spec-item"><i data-lucide="coffee" size="14"></i> Rychlovarná konvice</div>
+            </div>
+
+            <div
+                style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 12px;">
+                <div class="room-price" style="font-size: 1.4rem;">... CZK <span style="font-size: 0.9rem;">/ noc</span>
+                </div>
+                <button class="btn btn-primary" id="modal-book-btn">
+                    <i data-lucide="check" size="16"></i> Rezervovat tento pokoj
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-icon"
+                style="width: 64px; height: 64px; background: rgba(28, 49, 33, 0.1); color: var(--accent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                <i data-lucide="check-circle" size="36"></i>
+            </div>
+            <h3 style="margin-bottom: 12px; color: var(--accent-green);">Děkujeme za vaši rezervaci!</h3>
+            <p style="color: var(--text-muted); margin-bottom: 24px;">Vaši žádost jsme úspěšně přijali. Brzy vás budeme
+                kontaktovat pro potvrzení rezervace.</p>
+            <button class="btn btn-primary" onclick="closeModal()">Zavřít</button>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Default dates setup
+        const today = new Date();
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+
+        document.getElementById('hero-checkin').valueAsDate = today;
+        document.getElementById('hero-checkout').valueAsDate = tomorrow;
+        document.getElementById('calc-checkin').valueAsDate = today;
+        document.getElementById('calc-checkout').valueAsDate = tomorrow;
+
+        // Room Selection
+        function selectRoom(roomName) {
+            document.getElementById('calc-room').value = roomName;
+            scrollToCalc();
+            calculateTotal();
+        }
+
+        // Modal Details Room
+        function openRoomModal(title, desc, guests, bed, photos) {
+            document.getElementById('modal-room-title').innerText = title;
+            document.getElementById('modal-room-desc').innerText = desc;
+
+            const mainPreview = document.getElementById('modal-main-preview');
+            const thumbsContainer = document.getElementById('modal-thumbs-container');
+
+            // Check if photos exist and if current device is Desktop
+            if (photos && photos.length > 0 && window.innerWidth > 768) {
+                mainPreview.innerHTML = `<img src="${photos[0]}" alt="${title}">`;
+
+                let thumbsHTML = '';
+                photos.forEach((photo) => {
+                    thumbsHTML += `<div class="thumb-placeholder" onclick="switchModalMainImg('${photo}')"><img src="${photo}" alt="Thumb"></div>`;
+                });
+                thumbsContainer.innerHTML = thumbsHTML;
+            } else {
+                mainPreview.innerHTML = `<i data-lucide="image" size="48" style="opacity: 0.5; margin-bottom: 8px;"></i><span>Hlavní fotografie pokoje</span>`;
+                thumbsContainer.innerHTML = `
+          <div class="thumb-placeholder"><i data-lucide="camera" size="16"></i> Interiér</div>
+          <div class="thumb-placeholder"><i data-lucide="bed" size="16"></i> Postel</div>
+          <div class="thumb-placeholder"><i data-lucide="bath" size="16"></i> Koupelna</div>
+        `;
+                lucide.createIcons();
+            }
+
+            const bookBtn = document.getElementById('modal-book-btn');
+            bookBtn.onclick = function () {
+                closeRoomModal();
+                selectRoom(title);
+            };
+
+            document.getElementById('room-detail-modal').style.display = 'flex';
+        }
+
+        function switchModalMainImg(src) {
+            document.getElementById('modal-main-preview').innerHTML = `<img src="${src}" alt="Preview">`;
+        }
+
+        function closeRoomModal() {
+            document.getElementById('room-detail-modal').style.display = 'none';
+        }
+
+        function scrollToCalc() {
+            const calcIn = document.getElementById('hero-checkin').value;
+            const calcOut = document.getElementById('hero-checkout').value;
+            const heroRoom = document.getElementById('hero-room').value;
+
+            if (calcIn) document.getElementById('calc-checkin').value = calcIn;
+            if (calcOut) document.getElementById('calc-checkout').value = calcOut;
+            if (heroRoom) document.getElementById('calc-room').value = heroRoom;
+
+            document.getElementById('rezervace').scrollIntoView({ behavior: 'smooth' });
+            calculateTotal();
+        }
+
+        // Dynamic Night Calculator
+        function calculateTotal() {
+            const room = document.getElementById('calc-room').value;
+            const checkin = new Date(document.getElementById('calc-checkin').value);
+            const checkout = new Date(document.getElementById('calc-checkout').value);
+
+            document.getElementById('summary-room').innerText = room;
+
+            if (checkin && checkout && checkout > checkin) {
+                const diffTime = Math.abs(checkout - checkin);
+                const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                document.getElementById('summary-nights').innerText = nights;
+            } else {
+                document.getElementById('summary-nights').innerText = '0';
+            }
+
+            document.getElementById('summary-total').innerText = '... CZK';
+        }
+
+        // Modal Handle
+        function handleBooking(e) {
+            e.preventDefault();
+            document.getElementById('modal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        // Run initial calc
+        calculateTotal();
+    </script>
+</body>
+
+</html>
