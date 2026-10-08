@@ -27,10 +27,11 @@
             --border-color: #E5E7EB;
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
             --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 20px 35px rgba(0, 0, 0, 0.12);
             --radius-sm: 8px;
             --radius-md: 16px;
             --radius-lg: 24px;
-            --transition: all 0.3s ease;
+            --transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         * {
@@ -98,16 +99,6 @@
             transform: translateY(-2px);
         }
 
-        .btn-secondary {
-            background-color: var(--accent-green);
-            color: #FFF;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--accent-green-hover);
-            transform: translateY(-2px);
-        }
-
         .btn-outline {
             border: 1px solid var(--accent-green);
             color: var(--accent-green);
@@ -119,7 +110,7 @@
             color: #FFF;
         }
 
-        /* Header */
+        /* Header & Secret Admin Trigger */
         header {
             position: sticky;
             top: 0;
@@ -134,6 +125,12 @@
             align-items: center;
             justify-content: space-between;
             height: 80px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         .logo {
@@ -156,6 +153,25 @@
             align-items: center;
             justify-content: center;
             flex-shrink: 0;
+        }
+
+        /* Discreet Admin Lock Button */
+        .secret-admin-btn {
+            background: transparent;
+            border: none;
+            color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .secret-admin-btn:hover {
+            color: #FFFFFF;
+            background: rgba(255, 255, 255, 0.1);
         }
 
         nav {
@@ -319,7 +335,7 @@
             gap: 30px;
         }
 
-        /* ROOM CARD WITH HOVER ANIMATION DEMO */
+        /* MODERN SMOOTH HOVER ANIMATION FOR CARDS */
         .room-card {
             background: var(--bg-card);
             border-radius: var(--radius-md);
@@ -329,26 +345,15 @@
             display: flex;
             flex-direction: column;
             cursor: pointer;
-            transition: transform 0.05s steps(2, start), box-shadow 0.1s ease;
+            transition: var(--transition);
         }
 
         .room-card:hover {
-            transform: rotate(5deg) scale(1.08) translateY(-12px) translateX(8px);
-            box-shadow: 25px 20px 30px rgba(0, 0, 0, 0.15);
-            animation: cardJitter 0.2s infinite alternate;
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(28, 49, 33, 0.2);
         }
 
-        @keyframes cardJitter {
-            0% {
-                transform: rotate(5deg) scale(1.08) translateY(-12px) translateX(8px);
-            }
-
-            100% {
-                transform: rotate(3deg) scale(1.06) translateY(-8px) translateX(12px);
-            }
-        }
-
-        /* Photo Container & Image Display on All Devices */
         .room-image-container {
             width: 100%;
             height: 240px;
@@ -363,17 +368,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
         }
 
-        .room-image-placeholder {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            color: var(--text-muted);
+        .room-card:hover .room-img-desktop {
+            transform: scale(1.05);
         }
 
         .badge-detail {
@@ -435,7 +434,7 @@
         }
 
         .room-price {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             font-weight: 700;
             color: var(--accent-green);
         }
@@ -463,6 +462,7 @@
 
         .amenity-card:hover {
             border-color: var(--accent-orange);
+            transform: translateY(-4px);
         }
 
         .amenity-icon {
@@ -629,11 +629,10 @@
 
         .modal-content {
             background: var(--bg-card);
-            padding: 40px;
+            padding: 35px;
             border-radius: var(--radius-md);
-            max-width: 500px;
+            max-width: 480px;
             width: 100%;
-            text-align: center;
             position: relative;
         }
 
@@ -734,6 +733,39 @@
             border-radius: 20px;
         }
 
+        /* Admin Panel Form Elements */
+        .admin-form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            gap: 16px;
+        }
+
+        .admin-form-group label {
+            font-weight: 500;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+        }
+
+        .admin-form-group input {
+            width: 130px;
+            padding: 8px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: right;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .error-text {
+            color: #DC2626;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            display: none;
+        }
+
         /* MOBILE RESPONSIVE MEDIA QUERIES */
         @media (max-width: 768px) {
             .container {
@@ -822,11 +854,6 @@
                 border-radius: 16px;
             }
 
-            .room-card:hover {
-                transform: none;
-                animation: none;
-            }
-
             .gallery-preview {
                 height: 200px;
             }
@@ -839,10 +866,16 @@
     <!-- Header -->
     <header>
         <div class="container header-content">
-            <a href="#" class="logo">
-                <div class="logo-icon"><i data-lucide="trees" color="#FFF" size="18"></i></div>
-                <span>Rodinný hotel</span>
-            </a>
+            <div class="logo-container">
+                <a href="#" class="logo">
+                    <div class="logo-icon"><i data-lucide="trees" color="#FFF" size="18"></i></div>
+                    <span>Rodinný hotel</span>
+                </a>
+                <!-- Discreet Secret Admin Lock Button -->
+                <button class="secret-admin-btn" onclick="openAdminModal()" title="Správa">
+                    <i data-lucide="lock" size="14"></i>
+                </button>
+            </div>
 
             <nav id="nav-menu">
                 <a href="#o-nas">O nás</a>
@@ -942,7 +975,7 @@
                         <div class="room-feature"><i data-lucide="bed" size="16"></i> 1 Lůžko</div>
                     </div>
                     <div class="room-footer">
-                        <div class="room-price">... CZK <span>/ noc</span></div>
+                        <div class="room-price"><span id="price-card-1">1 200</span> CZK <span>/ noc</span></div>
                         <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"
                             onclick="event.stopPropagation(); selectRoom('Jednolůžkový pokoj');">Vybrat</button>
                     </div>
@@ -971,7 +1004,7 @@
                         <div class="room-feature"><i data-lucide="bed" size="16"></i> 1 Manželská postel</div>
                     </div>
                     <div class="room-footer">
-                        <div class="room-price">... CZK <span>/ noc</span></div>
+                        <div class="room-price"><span id="price-card-2">1 800</span> CZK <span>/ noc</span></div>
                         <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"
                             onclick="event.stopPropagation(); selectRoom('Dvoulůžkový pokoj s manželskou postelí');">Vybrat</button>
                     </div>
@@ -1000,7 +1033,7 @@
                         <div class="room-feature"><i data-lucide="bed" size="16"></i> 2 Oddělená lůžka</div>
                     </div>
                     <div class="room-footer">
-                        <div class="room-price">... CZK <span>/ noc</span></div>
+                        <div class="room-price"><span id="price-card-3">1 800</span> CZK <span>/ noc</span></div>
                         <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"
                             onclick="event.stopPropagation(); selectRoom('Dvoulůžkový pokoj se dvěma lůžky');">Vybrat</button>
                     </div>
@@ -1028,7 +1061,7 @@
                         <div class="room-feature"><i data-lucide="bed" size="16"></i> Více lůžek</div>
                     </div>
                     <div class="room-footer">
-                        <div class="room-price">... CZK <span>/ noc</span></div>
+                        <div class="room-price"><span id="price-card-4">2 500</span> CZK <span>/ noc</span></div>
                         <button class="btn btn-outline" style="padding: 8px 16px; font-size: 0.85rem;"
                             onclick="event.stopPropagation(); selectRoom('Čtyřlůžkový pokoj');">Vybrat</button>
                     </div>
@@ -1140,7 +1173,7 @@
 
                     <div class="calc-row total">
                         <span>Celková cena:</span>
-                        <span id="summary-total">... CZK</span>
+                        <span id="summary-total">0 CZK</span>
                     </div>
                 </div>
             </div>
@@ -1230,8 +1263,8 @@
 
             <div
                 style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px; flex-wrap: wrap; gap: 12px;">
-                <div class="room-price" style="font-size: 1.4rem;">... CZK <span style="font-size: 0.9rem;">/ noc</span>
-                </div>
+                <div class="room-price" style="font-size: 1.4rem;"><span id="modal-room-price">1 200</span> CZK <span
+                        style="font-size: 0.9rem;">/ noc</span></div>
                 <button class="btn btn-primary" id="modal-book-btn">
                     <i data-lucide="check" size="16"></i> Rezervovat tento pokoj
                 </button>
@@ -1241,7 +1274,7 @@
 
     <!-- Confirmation Modal -->
     <div id="modal" class="modal">
-        <div class="modal-content">
+        <div class="modal-content" style="text-align: center;">
             <div class="modal-icon"
                 style="width: 64px; height: 64px; background: rgba(28, 49, 33, 0.1); color: var(--accent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
                 <i data-lucide="check-circle" size="36"></i>
@@ -1253,7 +1286,102 @@
         </div>
     </div>
 
+    <!-- Admin Login & Dashboard Modal -->
+    <div id="admin-modal" class="modal">
+        <div class="modal-content">
+            <button class="close-modal-btn" onclick="closeAdminModal()"><i data-lucide="x" size="18"></i></button>
+
+            <!-- Login View -->
+            <div id="admin-login-view">
+                <div style="text-align: center; margin-bottom: 20px;">
+                    <div
+                        style="width: 48px; height: 48px; background: rgba(28, 49, 33, 0.1); color: var(--accent-green); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 12px;">
+                        <i data-lucide="shield-check" size="24"></i>
+                    </div>
+                    <h3 style="color: var(--accent-green);">Přihlášení Správce</h3>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Přístup k nastavení cen
+                        pokojů</p>
+                </div>
+
+                <form onsubmit="event.preventDefault(); loginAdmin();">
+                    <div class="form-group" style="margin-bottom: 14px;">
+                        <label>Přihlašovací jméno (E-mail)</label>
+                        <input type="text" id="admin-login" class="form-control" placeholder="admin" required>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label>Heslo</label>
+                        <input type="password" id="admin-password" class="form-control" placeholder="••••••••" required>
+                    </div>
+                    <div id="login-error" class="error-text">Neplatné přihlašovací údaje!</div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 10px;">Přihlásit
+                        se</button>
+                </form>
+            </div>
+
+            <!-- Editor / Dashboard View -->
+            <div id="admin-dashboard-view" style="display: none;">
+                <h3 style="margin-bottom: 8px; color: var(--accent-green); text-align: center;">Úprava Ceníku Pokojů
+                </h3>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; text-align: center;">
+                    Zadejte nové ceny v CZK za 1 noc</p>
+
+                <div class="admin-form-group">
+                    <label>Jednolůžkový pokoj:</label>
+                    <input type="number" id="input-price-1" value="1200">
+                </div>
+                <div class="admin-form-group">
+                    <label>Dvoulůžkový (manželská):</label>
+                    <input type="number" id="input-price-2" value="1800">
+                </div>
+                <div class="admin-form-group">
+                    <label>Dvoulůžkový (2 lůžka):</label>
+                    <input type="number" id="input-price-3" value="1800">
+                </div>
+                <div class="admin-form-group">
+                    <label>Čtyřlůžkový pokoj:</label>
+                    <input type="number" id="input-price-4" value="2500">
+                </div>
+
+                <button class="btn btn-primary" onclick="saveAdminPrices()" style="width: 100%; margin-top: 24px;">
+                    <i data-lucide="save" size="16"></i> Uložit nové ceny
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script>
+        // Initial Default Room Prices
+        let roomPrices = {
+            "Jednolůžkový pokoj": 1200,
+            "Dvoulůžkový pokoj s manželskou postelí": 1800,
+            "Dvoulůžkový pokoj se dvěma lůžky": 1800,
+            "Čtyřlůžkový pokoj": 2500
+        };
+
+        // Load saved prices from LocalStorage
+        function loadSavedPrices() {
+            const saved = localStorage.getItem('hotelRoomPrices');
+            if (saved) {
+                roomPrices = JSON.parse(saved);
+            }
+            updatePriceUI();
+        }
+
+        function updatePriceUI() {
+            document.getElementById('price-card-1').innerText = roomPrices["Jednolůžkový pokoj"].toLocaleString('cs-CZ');
+            document.getElementById('price-card-2').innerText = roomPrices["Dvoulůžkový pokoj s manželskou postelí"].toLocaleString('cs-CZ');
+            document.getElementById('price-card-3').innerText = roomPrices["Dvoulůžkový pokoj se dvěma lůžky"].toLocaleString('cs-CZ');
+            document.getElementById('price-card-4').innerText = roomPrices["Čtyřlůžkový pokoj"].toLocaleString('cs-CZ');
+
+            // Update admin inputs
+            document.getElementById('input-price-1').value = roomPrices["Jednolůžkový pokoj"];
+            document.getElementById('input-price-2').value = roomPrices["Dvoulůžkový pokoj s manželskou postelí"];
+            document.getElementById('input-price-3').value = roomPrices["Dvoulůžkový pokoj se dvěma lůžky"];
+            document.getElementById('input-price-4').value = roomPrices["Čtyřlůžkový pokoj"];
+
+            calculateTotal();
+        }
+
         // Initialize Lucide icons
         lucide.createIcons();
 
@@ -1286,11 +1414,11 @@
         function openRoomModal(title, desc, guests, bed, photos) {
             document.getElementById('modal-room-title').innerText = title;
             document.getElementById('modal-room-desc').innerText = desc;
+            document.getElementById('modal-room-price').innerText = (roomPrices[title] || 1200).toLocaleString('cs-CZ');
 
             const mainPreview = document.getElementById('modal-main-preview');
             const thumbsContainer = document.getElementById('modal-thumbs-container');
 
-            // Check if photos exist for all screen sizes
             if (photos && photos.length > 0) {
                 mainPreview.innerHTML = `<img src="${photos[0]}" alt="${title}">`;
 
@@ -1339,7 +1467,7 @@
             calculateTotal();
         }
 
-        // Dynamic Night Calculator
+        // Dynamic Night Calculator with Real Prices
         function calculateTotal() {
             const room = document.getElementById('calc-room').value;
             const checkin = new Date(document.getElementById('calc-checkin').value);
@@ -1347,15 +1475,19 @@
 
             document.getElementById('summary-room').innerText = room;
 
+            const pricePerNight = roomPrices[room] || 1200;
+
             if (checkin && checkout && checkout > checkin) {
                 const diffTime = Math.abs(checkout - checkin);
                 const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 document.getElementById('summary-nights').innerText = nights;
+
+                const total = nights * pricePerNight;
+                document.getElementById('summary-total').innerText = total.toLocaleString('cs-CZ') + ' CZK';
             } else {
                 document.getElementById('summary-nights').innerText = '0';
+                document.getElementById('summary-total').innerText = '0 CZK';
             }
-
-            document.getElementById('summary-total').innerText = '... CZK';
         }
 
         // Modal Handle
@@ -1368,8 +1500,49 @@
             document.getElementById('modal').style.display = 'none';
         }
 
-        // Run initial calc
-        calculateTotal();
+        // Admin Modal Actions & Authentication
+        function openAdminModal() {
+            document.getElementById('admin-modal').style.display = 'flex';
+            document.getElementById('admin-login-view').style.display = 'block';
+            document.getElementById('admin-dashboard-view').style.display = 'none';
+            document.getElementById('login-error').style.display = 'none';
+            document.getElementById('admin-login').value = '';
+            document.getElementById('admin-password').value = '';
+        }
+
+        function closeAdminModal() {
+            document.getElementById('admin-modal').style.display = 'none';
+        }
+
+        function loginAdmin() {
+            const loginVal = document.getElementById('admin-login').value.trim();
+            const pwdVal = document.getElementById('admin-password').value.trim();
+
+            // ADMIN CREDENTIALS:
+            // Login: admin
+            // Password: hotel2026
+            if (loginVal === 'admin' && pwdVal === 'hotel2026') {
+                document.getElementById('admin-login-view').style.display = 'none';
+                document.getElementById('admin-dashboard-view').style.display = 'block';
+                document.getElementById('login-error').style.display = 'none';
+            } else {
+                document.getElementById('login-error').style.display = 'block';
+            }
+        }
+
+        function saveAdminPrices() {
+            roomPrices["Jednolůžkový pokoj"] = parseInt(document.getElementById('input-price-1').value) || 1200;
+            roomPrices["Dvoulůžkový pokoj s manželskou postelí"] = parseInt(document.getElementById('input-price-2').value) || 1800;
+            roomPrices["Dvoulůžkový pokoj se dvěma lůžky"] = parseInt(document.getElementById('input-price-3').value) || 1800;
+            roomPrices["Čtyřlůžkový pokoj"] = parseInt(document.getElementById('input-price-4').value) || 2500;
+
+            localStorage.setItem('hotelRoomPrices', JSON.stringify(roomPrices));
+            updatePriceUI();
+            closeAdminModal();
+        }
+
+        // Load initial data
+        loadSavedPrices();
     </script>
 </body>
 
