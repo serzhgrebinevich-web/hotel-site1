@@ -348,7 +348,7 @@
             }
         }
 
-        /* Photo Placeholder & Desktop Image Display */
+        /* Photo Container & Image Display on All Devices */
         .room-image-container {
             width: 100%;
             height: 240px;
@@ -359,7 +359,7 @@
         }
 
         .room-img-desktop {
-            display: none;
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
@@ -374,17 +374,6 @@
             justify-content: center;
             gap: 10px;
             color: var(--text-muted);
-        }
-
-        /* Display real photo on desktop screens */
-        @media (min-width: 769px) {
-            .room-img-desktop {
-                display: block;
-            }
-
-            .room-image-placeholder.has-desktop-img {
-                display: none;
-            }
         }
 
         .badge-detail {
@@ -939,7 +928,7 @@
                     <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
                     <img src="images/1person1bed-interier1.jpg" alt="Jednolůžkový pokoj" class="room-img-desktop"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="room-image-placeholder has-desktop-img">
+                    <div class="room-image-placeholder" style="display:none;">
                         <i data-lucide="camera" size="36"></i>
                         <span>Zde bude fotografie pokoje</span>
                     </div>
@@ -968,7 +957,7 @@
                     <img src="images/1bed2person-interier1.jpg" alt="Dvoulůžkový pokoj s manželskou postelí"
                         class="room-img-desktop"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="room-image-placeholder has-desktop-img">
+                    <div class="room-image-placeholder" style="display:none;">
                         <i data-lucide="camera" size="36"></i>
                         <span>Zde bude fotografie pokoje</span>
                     </div>
@@ -997,7 +986,7 @@
                     <img src="images/2bed3person-interier1.jpg" alt="Dvoulůžkový pokoj se dvěma lůžky"
                         class="room-img-desktop"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="room-image-placeholder has-desktop-img">
+                    <div class="room-image-placeholder" style="display:none;">
                         <i data-lucide="camera" size="36"></i>
                         <span>Zde bude fotografie pokoje</span>
                     </div>
@@ -1025,7 +1014,7 @@
                     <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
                     <img src="images/4bed-interier1.jpg" alt="Čtyřlůžkový pokoj" class="room-img-desktop"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="room-image-placeholder has-desktop-img">
+                    <div class="room-image-placeholder" style="display:none;">
                         <i data-lucide="camera" size="36"></i>
                         <span>Zde bude fotografie pokoje</span>
                     </div>
@@ -1301,8 +1290,8 @@
             const mainPreview = document.getElementById('modal-main-preview');
             const thumbsContainer = document.getElementById('modal-thumbs-container');
 
-            // Check if photos exist and if current device is Desktop
-            if (photos && photos.length > 0 && window.innerWidth > 768) {
+            // Check if photos exist for all screen sizes
+            if (photos && photos.length > 0) {
                 mainPreview.innerHTML = `<img src="${photos[0]}" alt="${title}">`;
 
                 let thumbsHTML = '';
