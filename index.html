@@ -4,13 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rodinný hotel</title>
+    <title>Rodinný hotel - Komfort & Relaxace</title>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
+
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -155,7 +157,6 @@
             flex-shrink: 0;
         }
 
-        /* Discreet Admin Lock Button */
         .secret-admin-btn {
             background: transparent;
             border: none;
@@ -242,7 +243,6 @@
             font-weight: 300;
         }
 
-        /* Quick Search Bar */
         .booking-bar {
             background: #FFFFFF;
             padding: 24px;
@@ -328,14 +328,13 @@
             font-size: 1.05rem;
         }
 
-        /* Rooms Grid 2x2 on Desktop */
+        /* Rooms Grid */
         .rooms-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 30px;
         }
 
-        /* MODERN SMOOTH HOVER ANIMATION FOR CARDS */
         .room-card {
             background: var(--bg-card);
             border-radius: var(--radius-md);
@@ -631,7 +630,7 @@
             background: var(--bg-card);
             padding: 35px;
             border-radius: var(--radius-md);
-            max-width: 480px;
+            max-width: 520px;
             width: 100%;
             position: relative;
         }
@@ -640,7 +639,7 @@
             background: var(--bg-card);
             padding: 30px;
             border-radius: var(--radius-md);
-            max-width: 750px;
+            max-width: 780px;
             width: 100%;
             position: relative;
             max-height: 90vh;
@@ -687,13 +686,13 @@
 
         .gallery-thumbs {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
             gap: 10px;
             margin-bottom: 20px;
         }
 
         .thumb-placeholder {
-            height: 80px;
+            height: 75px;
             background: #F3F4F6;
             border-radius: 6px;
             border: 1px solid var(--border-color);
@@ -704,6 +703,11 @@
             font-size: 0.75rem;
             overflow: hidden;
             cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .thumb-placeholder:hover {
+            border-color: var(--accent-orange);
         }
 
         .thumb-placeholder img {
@@ -733,7 +737,32 @@
             border-radius: 20px;
         }
 
-        /* Admin Panel Form Elements */
+        /* Admin Tabs & Panel */
+        .admin-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+
+        .admin-tab-btn {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            color: var(--text-muted);
+            border-bottom: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .admin-tab-btn.active {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
+        }
+
         .admin-form-group {
             display: flex;
             justify-content: space-between;
@@ -749,7 +778,7 @@
             color: var(--text-dark);
         }
 
-        .admin-form-group input {
+        .admin-form-group input[type="number"] {
             width: 130px;
             padding: 8px 12px;
             border: 1px solid var(--border-color);
@@ -759,6 +788,52 @@
             font-size: 0.95rem;
         }
 
+        .admin-image-item {
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .admin-image-item h4 {
+            font-size: 1rem;
+            margin-bottom: 10px;
+            color: var(--accent-green);
+        }
+
+        .image-preview-strip {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+            overflow-x: auto;
+            padding-bottom: 6px;
+        }
+
+        .img-thumb-manage {
+            width: 60px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+            border: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .upload-btn-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #F3F4F6;
+            border: 1px solid var(--border-color);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .upload-btn-label:hover {
+            background: #E5E7EB;
+        }
+
         .error-text {
             color: #DC2626;
             font-size: 0.85rem;
@@ -766,7 +841,7 @@
             display: none;
         }
 
-        /* MOBILE RESPONSIVE MEDIA QUERIES */
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .container {
                 padding: 0 16px;
@@ -863,7 +938,6 @@
 
 <body>
 
-    <!-- Header -->
     <header>
         <div class="container header-content">
             <div class="logo-container">
@@ -871,8 +945,7 @@
                     <div class="logo-icon"><i data-lucide="trees" color="#FFF" size="18"></i></div>
                     <span>Rodinný hotel</span>
                 </a>
-                <!-- Discreet Secret Admin Lock Button -->
-                <button class="secret-admin-btn" onclick="openAdminModal()" title="Správa">
+                <button class="secret-admin-btn" onclick="openAdminModal()" title="Správa hotelu">
                     <i data-lucide="lock" size="14"></i>
                 </button>
             </div>
@@ -896,7 +969,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="hero-badge">
@@ -946,7 +1018,6 @@
         </div>
     </section>
 
-    <!-- Pokoje section -->
     <section id="pokoje" class="container">
         <div class="section-title">
             <h2>Naše Pokoje</h2>
@@ -954,17 +1025,14 @@
         </div>
 
         <div class="rooms-grid">
-            <!-- Pokoj 1: Jednolůžkový pokoj -->
+            <!-- Pokoj 1 -->
             <div class="room-card"
-                onclick="openRoomModal('Jednolůžkový pokoj', 'Útulný pokoj ideální pro jednotlivce nebo pracovní cesty s veškerým potřebným komfortem.', '1 Host', '1 Samostatné lůžko', ['images/1person1bed-interier1.jpg', 'images/1person1bed-interier2.jpg', 'images/1person1bed-bath.jpg'])">
+                onclick="openRoomModal('Jednolůžkový pokoj', 'Útulný pokoj ideální pro jednotlivce nebo pracovní cesty s veškerým potřebným komfortem.', '1 Host', '1 Samostatné lůžko')">
                 <div class="room-image-container">
                     <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
-                    <img src="images/1person1bed-interier1.jpg" alt="Jednolůžkový pokoj" class="room-img-desktop"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="room-image-placeholder" style="display:none;">
-                        <i data-lucide="camera" size="36"></i>
-                        <span>Zde bude fotografie pokoje</span>
-                    </div>
+                    <img id="card-img-1" src="images/1person1bed-interier1.jpg" alt="Jednolůžkový pokoj"
+                        class="room-img-desktop"
+                        onerror="this.src='https://placehold.co/600x400/1C3121/FFF?text=Pokoj+1';">
                 </div>
                 <div class="room-content">
                     <h3 class="room-title">Jednolůžkový pokoj</h3>
@@ -982,18 +1050,14 @@
                 </div>
             </div>
 
-            <!-- Pokoj 2: Dvoulůžkový pokoj s manželskou postelí -->
+            <!-- Pokoj 2 -->
             <div class="room-card"
-                onclick="openRoomModal('Dvoulůžkový pokoj s manželskou postelí', 'Komfortní pokoj s velkou manželskou postelí, vhodný pro páry hledající pohodlí a klid.', '2 Hosté', '1 Manželská postel', ['images/1bed2person-interier1.jpg', 'images/1bed2person-interier2.jpg', 'images/1bed2person-bath.jpg'])">
+                onclick="openRoomModal('Dvoulůžkový pokoj s manželskou postelí', 'Komfortní pokoj s velkou manželskou postelí, vhodný pro páry hledající pohodlí a klid.', '2 Hosté', '1 Manželská postel')">
                 <div class="room-image-container">
                     <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
-                    <img src="images/1bed2person-interier1.jpg" alt="Dvoulůžkový pokoj s manželskou postelí"
-                        class="room-img-desktop"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="room-image-placeholder" style="display:none;">
-                        <i data-lucide="camera" size="36"></i>
-                        <span>Zde bude fotografie pokoje</span>
-                    </div>
+                    <img id="card-img-2" src="images/1bed2person-interier1.jpg"
+                        alt="Dvoulůžkový pokoj s manželskou postelí" class="room-img-desktop"
+                        onerror="this.src='https://placehold.co/600x400/1C3121/FFF?text=Pokoj+2';">
                 </div>
                 <div class="room-content">
                     <h3 class="room-title">Dvoulůžkový pokoj s manželskou postelí</h3>
@@ -1011,18 +1075,14 @@
                 </div>
             </div>
 
-            <!-- Pokoj 3: Dvoulůžkový pokoj se dvěma lůžky -->
+            <!-- Pokoj 3 -->
             <div class="room-card"
-                onclick="openRoomModal('Dvoulůžkový pokoj se dvěma lůžky', 'Prostorný pokoj se dvěma oddělenými postelemi, ideální pro přátele nebo kolegy.', '2 Hosté', '2 Oddělená lůžka', ['images/2bed3person-interier1.jpg', 'images/2bed3person-interier2.jpg', 'images/2bed3person-interier3.jpg', 'images/2bed3person-bath.jpg'])">
+                onclick="openRoomModal('Dvoulůžkový pokoj se dvěma lůžky', 'Prostorný pokoj se dvěma oddělenými postelemi, ideální pro přátele nebo kolegy.', '2 Hosté', '2 Oddělená lůžka')">
                 <div class="room-image-container">
                     <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
-                    <img src="images/2bed3person-interier1.jpg" alt="Dvoulůžkový pokoj se dvěma lůžky"
+                    <img id="card-img-3" src="images/2bed3person-interier1.jpg" alt="Dvoulůžkový pokoj se dvěma lůžky"
                         class="room-img-desktop"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="room-image-placeholder" style="display:none;">
-                        <i data-lucide="camera" size="36"></i>
-                        <span>Zde bude fotografie pokoje</span>
-                    </div>
+                        onerror="this.src='https://placehold.co/600x400/1C3121/FFF?text=Pokoj+3';">
                 </div>
                 <div class="room-content">
                     <h3 class="room-title">Dvoulůžkový pokoj se dvěma lůžky</h3>
@@ -1040,17 +1100,14 @@
                 </div>
             </div>
 
-            <!-- Pokoj 4: Čtyřlůžkový pokoj -->
+            <!-- Pokoj 4 -->
             <div class="room-card"
-                onclick="openRoomModal('Čtyřlůžkový pokoj', 'Velký rodinný pokoj navržený pro pohodlný pobyt až čtyř osob se vším zázemím.', '4 Hosté', 'Více lůžek', ['images/4bed-interier1.jpg', 'images/4bed-interier2.jpg', 'images/4bed-interier3.jpg', 'images/4bed-bath.jpg'])">
+                onclick="openRoomModal('Čtyřlůžkový pokoj', 'Velký rodinný pokoj navržený pro pohodlný pobyt až čtyř osob se vším zázemím.', '4 Hosté', 'Více lůžek')">
                 <div class="room-image-container">
                     <span class="badge-detail"><i data-lucide="eye" size="12"></i> Detail pokoje</span>
-                    <img src="images/4bed-interier1.jpg" alt="Čtyřlůžkový pokoj" class="room-img-desktop"
-                        onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="room-image-placeholder" style="display:none;">
-                        <i data-lucide="camera" size="36"></i>
-                        <span>Zde bude fotografie pokoje</span>
-                    </div>
+                    <img id="card-img-4" src="images/4bed-interier1.jpg" alt="Čtyřlůžkový pokoj"
+                        class="room-img-desktop"
+                        onerror="this.src='https://placehold.co/600x400/1C3121/FFF?text=Pokoj+4';">
                 </div>
                 <div class="room-content">
                     <h3 class="room-title">Čtyřlůžkový pokoj</h3>
@@ -1070,7 +1127,6 @@
         </div>
     </section>
 
-    <!-- Služby section -->
     <section id="sluzby" style="background: #F4EFEA;">
         <div class="container">
             <div class="section-title">
@@ -1106,7 +1162,7 @@
         </div>
     </section>
 
-    <!-- Kalkulačka a Rezervace -->
+    <!-- Interactive Booking Section -->
     <section id="rezervace" class="container">
         <div class="section-title">
             <h2>Rezervace Ubytování</h2>
@@ -1115,7 +1171,6 @@
 
         <div class="booking-section">
             <div class="calc-container">
-                <!-- Formular -->
                 <form id="main-booking-form" onsubmit="handleBooking(event)">
                     <div class="form-group" style="margin-bottom: 16px;">
                         <label>Typ pokoje</label>
@@ -1157,7 +1212,6 @@
                     </button>
                 </form>
 
-                <!-- Summary -->
                 <div class="calc-summary">
                     <div>
                         <h3 style="margin-bottom: 20px; color: var(--accent-green);">Přehled rezervace</h3>
@@ -1180,7 +1234,6 @@
         </div>
     </section>
 
-    <!-- Kontakt section -->
     <section id="kontakt" class="container">
         <div class="section-title">
             <h2>Kontaktujte Nás</h2>
@@ -1218,7 +1271,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -1231,11 +1283,9 @@
         </div>
     </footer>
 
-    <!-- Detail Pokoju Modal -->
     <div id="room-detail-modal" class="modal">
         <div class="modal-content-large">
             <button class="close-modal-btn" onclick="closeRoomModal()"><i data-lucide="x" size="18"></i></button>
-
             <h2 id="modal-room-title" style="margin-bottom: 12px; color: var(--accent-green);">Název Pokoje</h2>
 
             <div class="gallery-preview" id="modal-main-preview">
@@ -1243,11 +1293,7 @@
                 <span>Hlavní fotografie pokoje</span>
             </div>
 
-            <div class="gallery-thumbs" id="modal-thumbs-container">
-                <div class="thumb-placeholder"><i data-lucide="camera" size="16"></i> Interiér</div>
-                <div class="thumb-placeholder"><i data-lucide="bed" size="16"></i> Postel</div>
-                <div class="thumb-placeholder"><i data-lucide="bath" size="16"></i> Koupelna</div>
-            </div>
+            <div class="gallery-thumbs" id="modal-thumbs-container"></div>
 
             <p id="modal-room-desc" style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px;">
                 Popis pokoje...
@@ -1299,13 +1345,13 @@
                         <i data-lucide="shield-check" size="24"></i>
                     </div>
                     <h3 style="color: var(--accent-green);">Přihlášení Správce</h3>
-                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Přístup k nastavení cen
-                        pokojů</p>
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 4px;">Přístup k nastavení cen a
+                        fotografií</p>
                 </div>
 
                 <form onsubmit="event.preventDefault(); loginAdmin();">
                     <div class="form-group" style="margin-bottom: 14px;">
-                        <label>Přihlašovací jméno (E-mail)</label>
+                        <label>Přihlašovací jméno</label>
                         <input type="text" id="admin-login" class="form-control" placeholder="admin" required>
                     </div>
                     <div class="form-group" style="margin-bottom: 20px;">
@@ -1318,39 +1364,49 @@
                 </form>
             </div>
 
-            <!-- Editor / Dashboard View -->
+            <!-- Dashboard View -->
             <div id="admin-dashboard-view" style="display: none;">
-                <h3 style="margin-bottom: 8px; color: var(--accent-green); text-align: center;">Úprava Ceníku Pokojů
-                </h3>
-                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 24px; text-align: center;">
-                    Zadejte nové ceny v CZK za 1 noc</p>
+                <h3 style="margin-bottom: 12px; color: var(--accent-green); text-align: center;">Správa Hotelu</h3>
 
-                <div class="admin-form-group">
-                    <label>Jednolůžkový pokoj:</label>
-                    <input type="number" id="input-price-1" value="1200">
-                </div>
-                <div class="admin-form-group">
-                    <label>Dvoulůžkový (manželská):</label>
-                    <input type="number" id="input-price-2" value="1800">
-                </div>
-                <div class="admin-form-group">
-                    <label>Dvoulůžkový (2 lůžka):</label>
-                    <input type="number" id="input-price-3" value="1800">
-                </div>
-                <div class="admin-form-group">
-                    <label>Čtyřlůžkový pokoj:</label>
-                    <input type="number" id="input-price-4" value="2500">
+                <div class="admin-tabs">
+                    <button class="admin-tab-btn active" onclick="switchAdminTab('prices')">Ceník</button>
+                    <button class="admin-tab-btn" onclick="switchAdminTab('images')">Fotografie Pokojů</button>
                 </div>
 
-                <button class="btn btn-primary" onclick="saveAdminPrices()" style="width: 100%; margin-top: 24px;">
-                    <i data-lucide="save" size="16"></i> Uložit nové ceny
+                <!-- Tab 1: Prices -->
+                <div id="admin-tab-prices">
+                    <div class="admin-form-group">
+                        <label>Jednolůžkový pokoj:</label>
+                        <input type="number" id="input-price-1" value="1200">
+                    </div>
+                    <div class="admin-form-group">
+                        <label>Dvoulůžkový (manželská):</label>
+                        <input type="number" id="input-price-2" value="1800">
+                    </div>
+                    <div class="admin-form-group">
+                        <label>Dvoulůžkový (2 lůžka):</label>
+                        <input type="number" id="input-price-3" value="1800">
+                    </div>
+                    <div class="admin-form-group">
+                        <label>Čtyřlůžkový pokoj:</label>
+                        <input type="number" id="input-price-4" value="2500">
+                    </div>
+                </div>
+
+                <!-- Tab 2: Images -->
+                <div id="admin-tab-images" style="display: none; max-height: 350px; overflow-y: auto;">
+                    <div id="admin-images-list"></div>
+                </div>
+
+                <button class="btn btn-primary" onclick="saveAdminChanges()" style="width: 100%; margin-top: 24px;">
+                    <i data-lucide="save" size="16"></i> Uložit všechny změny
                 </button>
             </div>
         </div>
     </div>
 
     <script>
-        // Initial Default Room Prices
+        // State Data
         let roomPrices = {
             "Jednolůžkový pokoj": 1200,
             "Dvoulůžkový pokoj s manželskou postelí": 1800,
@@ -1358,22 +1414,56 @@
             "Čtyřlůžkový pokoj": 2500
         };
 
-        // Load saved prices from LocalStorage
-        function loadSavedPrices() {
-            const saved = localStorage.getItem('hotelRoomPrices');
-            if (saved) {
-                roomPrices = JSON.parse(saved);
+        let roomPhotos = {
+            "Jednolůžkový pokoj": [
+                'images/1person1bed-interier1.jpg',
+                'images/1person1bed-interier2.jpg',
+                'images/1person1bed-bath.jpg'
+            ],
+            "Dvoulůžkový pokoj s manželskou postelí": [
+                'images/1bed2person-interier1.jpg',
+                'images/1bed2person-interier2.jpg',
+                'images/1bed2person-bath.jpg'
+            ],
+            "Dvoulůžkový pokoj se dvěma lůžky": [
+                'images/2bed3person-interier1.jpg',
+                'images/2bed3person-interier2.jpg',
+                'images/2bed3person-interier3.jpg'
+            ],
+            "Čtyřlůžkový pokoj": [
+                'images/4bed-interier1.jpg',
+                'images/4bed-interier2.jpg',
+                'images/4bed-interier3.jpg'
+            ]
+        };
+
+        // Load from LocalStorage
+        function loadSavedState() {
+            const savedPrices = localStorage.getItem('hotelRoomPrices');
+            if (savedPrices) {
+                roomPrices = JSON.parse(savedPrices);
             }
-            updatePriceUI();
+            const savedPhotos = localStorage.getItem('hotelRoomPhotos');
+            if (savedPhotos) {
+                roomPhotos = JSON.parse(savedPhotos);
+            }
+            updateUI();
         }
 
-        function updatePriceUI() {
+        function updateUI() {
+            // Update Prices
             document.getElementById('price-card-1').innerText = roomPrices["Jednolůžkový pokoj"].toLocaleString('cs-CZ');
             document.getElementById('price-card-2').innerText = roomPrices["Dvoulůžkový pokoj s manželskou postelí"].toLocaleString('cs-CZ');
             document.getElementById('price-card-3').innerText = roomPrices["Dvoulůžkový pokoj se dvěma lůžky"].toLocaleString('cs-CZ');
             document.getElementById('price-card-4').innerText = roomPrices["Čtyřlůžkový pokoj"].toLocaleString('cs-CZ');
 
-            // Update admin inputs
+            // Update Card Cover Images
+            if (roomPhotos["Jednolůžkový pokoj"][0]) document.getElementById('card-img-1').src = roomPhotos["Jednolůžkový pokoj"][0];
+            if (roomPhotos["Dvoulůžkový pokoj s manželskou postelí"][0]) document.getElementById('card-img-2').src = roomPhotos["Dvoulůžkový pokoj s manželskou postelí"][0];
+            if (roomPhotos["Dvoulůžkový pokoj se dvěma lůžky"][0]) document.getElementById('card-img-3').src = roomPhotos["Dvoulůžkový pokoj se dvěma lůžky"][0];
+            if (roomPhotos["Čtyřlůžkový pokoj"][0]) document.getElementById('card-img-4').src = roomPhotos["Čtyřlůžkový pokoj"][0];
+
+            // Update Inputs
             document.getElementById('input-price-1').value = roomPrices["Jednolůžkový pokoj"];
             document.getElementById('input-price-2').value = roomPrices["Dvoulůžkový pokoj s manželskou postelí"];
             document.getElementById('input-price-3').value = roomPrices["Dvoulůžkový pokoj se dvěma lůžky"];
@@ -1382,18 +1472,15 @@
             calculateTotal();
         }
 
-        // Initialize Lucide icons
+        // Initialize Lucide Icons
         lucide.createIcons();
 
-        // Mobile Menu Toggle
+        // Mobile Menu
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => { navMenu.classList.toggle('active'); });
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Default dates setup
+        // Dates Setup
         const today = new Date();
         const tomorrow = new Date(today);
         tomorrow.setDate(tomorrow.getDate() + 1);
@@ -1403,42 +1490,35 @@
         document.getElementById('calc-checkin').valueAsDate = today;
         document.getElementById('calc-checkout').valueAsDate = tomorrow;
 
-        // Room Selection
         function selectRoom(roomName) {
             document.getElementById('calc-room').value = roomName;
             scrollToCalc();
             calculateTotal();
         }
 
-        // Modal Details Room
-        function openRoomModal(title, desc, guests, bed, photos) {
+        function openRoomModal(title, desc) {
             document.getElementById('modal-room-title').innerText = title;
             document.getElementById('modal-room-desc').innerText = desc;
             document.getElementById('modal-room-price').innerText = (roomPrices[title] || 1200).toLocaleString('cs-CZ');
 
+            const photos = roomPhotos[title] || [];
             const mainPreview = document.getElementById('modal-main-preview');
             const thumbsContainer = document.getElementById('modal-thumbs-container');
 
-            if (photos && photos.length > 0) {
+            if (photos.length > 0) {
                 mainPreview.innerHTML = `<img src="${photos[0]}" alt="${title}">`;
-
                 let thumbsHTML = '';
                 photos.forEach((photo) => {
                     thumbsHTML += `<div class="thumb-placeholder" onclick="switchModalMainImg('${photo}')"><img src="${photo}" alt="Thumb"></div>`;
                 });
                 thumbsContainer.innerHTML = thumbsHTML;
             } else {
-                mainPreview.innerHTML = `<i data-lucide="image" size="48" style="opacity: 0.5; margin-bottom: 8px;"></i><span>Hlavní fotografie pokoje</span>`;
-                thumbsContainer.innerHTML = `
-          <div class="thumb-placeholder"><i data-lucide="camera" size="16"></i> Interiér</div>
-          <div class="thumb-placeholder"><i data-lucide="bed" size="16"></i> Postel</div>
-          <div class="thumb-placeholder"><i data-lucide="bath" size="16"></i> Koupelna</div>
-        `;
+                mainPreview.innerHTML = `<i data-lucide="image" size="48" style="opacity: 0.5;"></i>`;
+                thumbsContainer.innerHTML = '';
                 lucide.createIcons();
             }
 
-            const bookBtn = document.getElementById('modal-book-btn');
-            bookBtn.onclick = function () {
+            document.getElementById('modal-book-btn').onclick = function () {
                 closeRoomModal();
                 selectRoom(title);
             };
@@ -1467,21 +1547,18 @@
             calculateTotal();
         }
 
-        // Dynamic Night Calculator with Real Prices
         function calculateTotal() {
             const room = document.getElementById('calc-room').value;
             const checkin = new Date(document.getElementById('calc-checkin').value);
             const checkout = new Date(document.getElementById('calc-checkout').value);
 
             document.getElementById('summary-room').innerText = room;
-
             const pricePerNight = roomPrices[room] || 1200;
 
             if (checkin && checkout && checkout > checkin) {
                 const diffTime = Math.abs(checkout - checkin);
                 const nights = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                 document.getElementById('summary-nights').innerText = nights;
-
                 const total = nights * pricePerNight;
                 document.getElementById('summary-total').innerText = total.toLocaleString('cs-CZ') + ' CZK';
             } else {
@@ -1490,7 +1567,6 @@
             }
         }
 
-        // Modal Handle
         function handleBooking(e) {
             e.preventDefault();
             document.getElementById('modal').style.display = 'flex';
@@ -1500,7 +1576,7 @@
             document.getElementById('modal').style.display = 'none';
         }
 
-        // Admin Modal Actions & Authentication
+        // Admin Panel Logic
         function openAdminModal() {
             document.getElementById('admin-modal').style.display = 'flex';
             document.getElementById('admin-login-view').style.display = 'block';
@@ -1518,31 +1594,88 @@
             const loginVal = document.getElementById('admin-login').value.trim();
             const pwdVal = document.getElementById('admin-password').value.trim();
 
-            // ADMIN CREDENTIALS:
-            // Login: admin
-            // Password: hotel2026
             if (loginVal === 'admin' && pwdVal === 'hotel2026') {
                 document.getElementById('admin-login-view').style.display = 'none';
                 document.getElementById('admin-dashboard-view').style.display = 'block';
                 document.getElementById('login-error').style.display = 'none';
+                renderAdminImagesTab();
             } else {
                 document.getElementById('login-error').style.display = 'block';
             }
         }
 
-        function saveAdminPrices() {
+        function switchAdminTab(tab) {
+            const tabBtns = document.querySelectorAll('.admin-tab-btn');
+            tabBtns.forEach(b => b.classList.remove('active'));
+
+            if (tab === 'prices') {
+                tabBtns[0].classList.add('active');
+                document.getElementById('admin-tab-prices').style.display = 'block';
+                document.getElementById('admin-tab-images').style.display = 'none';
+            } else {
+                tabBtns[1].classList.add('active');
+                document.getElementById('admin-tab-prices').style.display = 'none';
+                document.getElementById('admin-tab-images').style.display = 'block';
+            }
+        }
+
+        function renderAdminImagesTab() {
+            const container = document.getElementById('admin-images-list');
+            let html = '';
+
+            Object.keys(roomPhotos).forEach((roomKey) => {
+                html += `
+          <div class="admin-image-item">
+            <h4>${roomKey}</h4>
+            <div class="image-preview-strip">
+        `;
+
+                roomPhotos[roomKey].forEach((imgSrc) => {
+                    html += `<img src="${imgSrc}" class="img-thumb-manage" onerror="this.src='https://placehold.co/100?text=Photo';">`;
+                });
+
+                html += `
+            </div>
+            <label class="upload-btn-label">
+              <i data-lucide="upload" size="14"></i> Přidat fotku z zařízení
+              <input type="file" accept="image/*" style="display:none;" onchange="handleImageUpload(event, '${roomKey}')">
+            </label>
+          </div>
+        `;
+            });
+
+            container.innerHTML = html;
+            lucide.createIcons();
+        }
+
+        function handleImageUpload(event, roomKey) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const base64Image = e.target.result;
+                roomPhotos[roomKey].unshift(base64Image); // Add new photo to the beginning
+                renderAdminImagesTab();
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function saveAdminChanges() {
             roomPrices["Jednolůžkový pokoj"] = parseInt(document.getElementById('input-price-1').value) || 1200;
             roomPrices["Dvoulůžkový pokoj s manželskou postelí"] = parseInt(document.getElementById('input-price-2').value) || 1800;
             roomPrices["Dvoulůžkový pokoj se dvěma lůžky"] = parseInt(document.getElementById('input-price-3').value) || 1800;
             roomPrices["Čtyřlůžkový pokoj"] = parseInt(document.getElementById('input-price-4').value) || 2500;
 
             localStorage.setItem('hotelRoomPrices', JSON.stringify(roomPrices));
-            updatePriceUI();
+            localStorage.setItem('hotelRoomPhotos', JSON.stringify(roomPhotos));
+
+            updateUI();
             closeAdminModal();
         }
 
-        // Load initial data
-        loadSavedPrices();
+        // Initial Load
+        loadSavedState();
     </script>
 </body>
 
